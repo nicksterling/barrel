@@ -1,0 +1,2448 @@
+---
+# Source: harbor/charts/postgresql/templates/secrets.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: RELEASE-NAME-postgresql
+  labels:
+    app.kubernetes.io/name: postgresql
+    helm.sh/chart: postgresql-9.1.4
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+type: Opaque
+data:
+  postgresql-password: "bm90LXNlY3VyZS1kYXRhYmFzZS1wYXNzd29yZA=="
+---
+# Source: harbor/templates/chartmuseum/chartmuseum-secret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: RELEASE-NAME-harbor-chartmuseum-secret
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: chartmuseum
+type: Opaque
+data:
+  CACHE_REDIS_PASSWORD: ""
+---
+# Source: harbor/templates/clair/clair-secret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: RELEASE-NAME-harbor-clair
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+type: Opaque
+data:
+  config.yaml: Y2xhaXI6CiAgZGF0YWJhc2U6CiAgICB0eXBlOiBwZ3NxbAogICAgb3B0aW9uczoKICAgICAgc291cmNlOiAicG9zdGdyZXM6Ly9wb3N0Z3Jlczpub3Qtc2VjdXJlLWRhdGFiYXNlLXBhc3N3b3JkQFJFTEVBU0UtTkFNRS1wb3N0Z3Jlc3FsOjU0MzIvcG9zdGdyZXM/c3NsbW9kZT1kaXNhYmxlIgogICAgICAjIE51bWJlciBvZiBlbGVtZW50cyBrZXB0IGluIHRoZSBjYWNoZQogICAgICAjIFZhbHVlcyB1bmxpa2VseSB0byBjaGFuZ2UgKGUuZy4gbmFtZXNwYWNlcykgYXJlIGNhY2hlZCBpbiBvcmRlciB0byBzYXZlIHByZXZlbnQgbmVlZGxlc3Mgcm91bmR0cmlwcyB0byB0aGUgZGF0YWJhc2UuCiAgICAgIGNhY2hlc2l6ZTogMTYzODQKICBhcGk6CiAgICAjIEFQSSBzZXJ2ZXIgcG9ydAogICAgcG9ydDogNjA2MAogICAgaGVhbHRocG9ydDogNjA2MQogICAgIyBEZWFkbGluZSBiZWZvcmUgYW4gQVBJIHJlcXVlc3Qgd2lsbCByZXNwb25kIHdpdGggYSA1MDMKICAgIHRpbWVvdXQ6IDMwMHMKICB1cGRhdGVyOgogICAgaW50ZXJ2YWw6IDEyaAo=
+  redis: cmVkaXM6Ly9SRUxFQVNFLU5BTUUtcmVkaXMtbWFzdGVyOjYzNzkvNA==
+  database: cG9zdGdyZXM6Ly9wb3N0Z3Jlczpub3Qtc2VjdXJlLWRhdGFiYXNlLXBhc3N3b3JkQFJFTEVBU0UtTkFNRS1wb3N0Z3Jlc3FsOjU0MzIvcG9zdGdyZXM/c3NsbW9kZT1kaXNhYmxl
+---
+# Source: harbor/templates/core/core-secret-envvars.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: RELEASE-NAME-harbor-core-envvars
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: core
+type: Opaque
+data:
+  _REDIS_URL: "UkVMRUFTRS1OQU1FLXJlZGlzLW1hc3Rlcjo2Mzc5LDEwMCw="
+  _REDIS_URL_REG: "cmVkaXM6Ly9SRUxFQVNFLU5BTUUtcmVkaXMtbWFzdGVyOjYzNzkvMg=="
+  REGISTRY_CREDENTIAL_USERNAME: "aGFyYm9yX3JlZ2lzdHJ5X3VzZXI="
+  REGISTRY_CREDENTIAL_PASSWORD: "aGFyYm9yX3JlZ2lzdHJ5X3Bhc3N3b3Jk"
+  CSRF_KEY: "a0Z4SXdmRFdkaDl2SHo2TGRqNmtPNVB6VldXd1RGR1E="
+  HARBOR_ADMIN_PASSWORD: "VDRsSlN3RE5UdA=="
+  
+  POSTGRESQL_PASSWORD: "bm90LXNlY3VyZS1kYXRhYmFzZS1wYXNzd29yZA=="
+  CLAIR_DB_PASSWORD: "bm90LXNlY3VyZS1kYXRhYmFzZS1wYXNzd29yZA=="
+---
+# Source: harbor/templates/core/core-secret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: RELEASE-NAME-harbor-core
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: core
+type: Opaque
+data:
+  secretKey: "d0cyODZFa1JxWFhxbnhuTQ=="
+  secret: "R0RqVlBMd0pZRW04SGNuNQ=="
+  tls.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUZrekNDQTN1Z0F3SUJBZ0lKQUxyK0xWT0VzdytzTUEwR0NTcUdTSWIzRFFFQkN3VUFNR0F4Q3pBSkJnTlYKQkFZVEFrVlRNUkF3RGdZRFZRUUlEQWRUWlhacGJHeGxNUkF3RGdZRFZRUUhEQWRUWlhacGJHeGxNUkF3RGdZRApWUVFLREFkQ2FYUnVZVzFwTVJzd0dRWURWUVFEREJKb1lYSmliM0l1WW1sMGJtRnRhUzVqYjIwd0hoY05NVGt3Ck5USXdNVEF3TVRVeldoY05NakF3TlRFNU1UQXdNVFV6V2pCZ01Rc3dDUVlEVlFRR0V3SkZVekVRTUE0R0ExVUUKQ0F3SFUyVjJhV3hzWlRFUU1BNEdBMVVFQnd3SFUyVjJhV3hzWlRFUU1BNEdBMVVFQ2d3SFFtbDBibUZ0YVRFYgpNQmtHQTFVRUF3d1NhR0Z5WW05eUxtSnBkRzVoYldrdVkyOXRNSUlDSWpBTkJna3Foa2lHOXcwQkFRRUZBQU9DCkFnOEFNSUlDQ2dLQ0FnRUFxb0c4ZnNud0NwZittV1k3b2p4VENxYXNOVnVEUXY4NGtsajFHa003ZEpGTlZwMEoKVzV1WklaUit2dURxNFZJdXZxZWV1Y085RjF4TWFGaEdxZlZpYnVld0VEMm9XSTRZMkttMytUOWEwcjZ0RkthagphSXlwNTdPSFh5c1hjaE9KOHp5dGRsYW5kaWk4elBBYS9sSDBiak9HR3liTk5NWjlFa3NEbk5YTTlZTFA5NURICmpzSFJ1b0l0NWlRb0lKWHFoYW8vREV3YUJjZHhXS08rd1NFRm5lTzBOSWlpeXR2VGh1NGw2aDhETlZEWHhzUDAKc2o3ZHZWZXFZMTBjMUREM0pLK1o1MHJOWWw1Qjk1V0hmVGttTnNISmxiOHYxc3Q5dDk4eTM0K01rRE1HUUpLTwpYZVFQTHdDREtJbUw3bnd5K2NqVWlIbHdFWTM5bEVBYzdBVWw0UUZ3alMzOFIxWjlLNU5Ld1FiQU11TGlVZUltCnk4VkZvMTRjL0FsTEU5cUhaTHEzOGJGaGVKb0J5aThvWTQ2ZTZDV0pUTVRzZnJsZ1ZXR1NDVW9PbXBDM0ZmK2wKdUNVK3B0ZmtGSHoybFF1Vk1qK1U3dlJrZ0tncnF0b21KSVBzcW9LdzF3S1Fwb1g5a2puVUNwdGc0R204c04vUgpMOUllQklCeGRXWGxlL2dsZk1PUi9XbmtVZ2Fqc2o3bVhnZ3QzcjluSVRoNlpSTVlTUjV1dmNEM2V1bCtibVhFCm4xcWY5V1dDUUpHZzYrRHpidWw4VTAwL3NzdGlha29PSERMc3Q4SGFaeTFOZk5SUG03WU5WZ3V5cXI2b1g0Q08Kb25NNG02eWJvRitqUExDdWZYVTZFYXZUM0U0S0FTNFJoVHNvd2pjMHIvcENTZk5kYzdFT0QxYm5wdDBDQXdFQQpBYU5RTUU0d0hRWURWUjBPQkJZRUZJUWd3QU45Vlh5LzFXME5YbDdFREw4RkUzZ0hNQjhHQTFVZEl3UVlNQmFBCkZJUWd3QU45Vlh5LzFXME5YbDdFREw4RkUzZ0hNQXdHQTFVZEV3UUZNQU1CQWY4d0RRWUpLb1pJaHZjTkFRRUwKQlFBRGdnSUJBREppMkdockZNSDJoQWNKV2JZRmJKc25GUm5DOVBIRzI0aFJpTTYyYkJDY3V6RWVycjdEM05SRQo5cVhhditLaVptVk4vT2Nxd3VIZFVtcDV0djh2OGxMQTEzWi9YMlZhSG1zVmtCKzAySkFTY3Bqb25FMEw4VUFwCjQrQnJxL3RDMTVzK2w2ZzZwSEI5SjlYUDBJd25zUEJEb1ZkQXpJay91enRERVJmakNBeW9NNFdxcmpYSVhwNHUKeVRXRG9EUWFIcFFTZGZaQUpjdjd0ODJKSmUxSjl2YmUrdEZtRGdNY2ZJb2VDcUN0MWZrWWYvdXNGRk02bUxhKwpndEhuSUFJR0x2R2pEUi9SdFNsYnZHY1JycXZveUszWHg0V29Zek5PZkM2ZTZuRVNsa1RQako2UHlScXFHaGJMCkZHK1Y2RVBZRHovRTYzVkd0eE5hWitNUWNqSGprNHE3YzhwQUwxRkUxOUpwb2VhRUFITEtCUkhBcUpiS3NPWmgKV1NtdkNYMjN1Tk9yeW1hZ2g3TjZwR3lCQzVZSmN0cm9hWGwrclBPZE5qQm5pbVp3OUJseGxaTHZRTFRUaUw0egpsU1dQdXpSZHhibFNMR0VHUGZZNndJOWplR0o2dy94T09EQUhObVBLTGllbkg5VFZVcHBvTC9UY0pEU28xTDJUCnEyK0RQYnJZSko1c0dtUnVFcWpvcERkTE9Dc3Rhbk9BemRHckkvdkVRZEtEL1p6a1JLaktEWS9rRDJuWGdzVE8KZndhUHZ4amhNVFJtU1BSWDEwQTZ6QzIyUXUzT1JFRFc0OEVML0U3Mkl3blFQd0hVM0ZHVXJVZDluZGFYYTB2RQpVcVppV3REKy9TSW1QV013UGhxVnF0L3p3cG1DWkJYTndrdjVmZ0hRY28vZUdqRFhraXhsCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+  tls.key: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlKS0FJQkFBS0NBZ0VBcW9HOGZzbndDcGYrbVdZN29qeFRDcWFzTlZ1RFF2ODRrbGoxR2tNN2RKRk5WcDBKClc1dVpJWlIrdnVEcTRWSXV2cWVldWNPOUYxeE1hRmhHcWZWaWJ1ZXdFRDJvV0k0WTJLbTMrVDlhMHI2dEZLYWoKYUl5cDU3T0hYeXNYY2hPSjh6eXRkbGFuZGlpOHpQQWEvbEgwYmpPR0d5Yk5OTVo5RWtzRG5OWE05WUxQOTVESApqc0hSdW9JdDVpUW9JSlhxaGFvL0RFd2FCY2R4V0tPK3dTRUZuZU8wTklpaXl0dlRodTRsNmg4RE5WRFh4c1AwCnNqN2R2VmVxWTEwYzFERDNKSytaNTByTllsNUI5NVdIZlRrbU5zSEpsYjh2MXN0OXQ5OHkzNCtNa0RNR1FKS08KWGVRUEx3Q0RLSW1MN253eStjalVpSGx3RVkzOWxFQWM3QVVsNFFGd2pTMzhSMVo5SzVOS3dRYkFNdUxpVWVJbQp5OFZGbzE0Yy9BbExFOXFIWkxxMzhiRmhlSm9CeWk4b1k0NmU2Q1dKVE1Uc2ZybGdWV0dTQ1VvT21wQzNGZitsCnVDVStwdGZrRkh6MmxRdVZNaitVN3ZSa2dLZ3JxdG9tSklQc3FvS3cxd0tRcG9YOWtqblVDcHRnNEdtOHNOL1IKTDlJZUJJQnhkV1hsZS9nbGZNT1IvV25rVWdhanNqN21YZ2d0M3I5bklUaDZaUk1ZU1I1dXZjRDNldWwrYm1YRQpuMXFmOVdXQ1FKR2c2K0R6YnVsOFUwMC9zc3RpYWtvT0hETHN0OEhhWnkxTmZOUlBtN1lOVmd1eXFyNm9YNENPCm9uTTRtNnlib0YralBMQ3VmWFU2RWF2VDNFNEtBUzRSaFRzb3dqYzByL3BDU2ZOZGM3RU9EMWJucHQwQ0F3RUEKQVFLQ0FnQVUvalk4RWhibzV2L2syUzU4Y2hyelU4UWVLYTlHbjIvU3JQczRpWkNYY0pCcUdwbWRXdElHeldheApqN1c3bWtmQkY1ZzJYUUE2RVJZalBzTXNoOWJmdXN6MW92SElQVzZYdG9XOVBXeXNSK2U5aENyWVk0RkQwdG5YCkFOSTVMR2l1dHdqUWFpamlKbS9nZDZ1TEpvSUcwM2N1ZnArRFlQRGpRTE1vS3phNS82b2xYQUVGOVowaDdvZEMKTDY5MUc2QXRadUd1WE94VFM5UUx5dFZncC9VdUZHd0tqOHdqVjk5NlhIWDBsbTdwc0pOd21JM1hLR0Jhd0tGcwo3SGp4TXpvcW5TaEF6dmZzcFpoUHFHeHZJWXN2OExvbUlzejhFRC9oVkt6SjA3M0Z2MUtFdnNhaWpzTEQwYmRVClZXTVNNTjZCM0pVMlhHVk05QU9GcmtNaFdCenFuS2ZSM3FubXRoWTk1RG1nNWM1T0pPQW5pWTZDelZyL0xaemUKRnk3WXA2ZGhvK0dGZDJpT28wTGJvaVVWcytxUG9MUkdpYURpc1ZpQ1c3NG1Eait1YXZzeDBGTmFsV09KM29aYgpRUWZjQzJFRVJjSUpGZUlVeG55a3B5dnNxOW1SNm5sSkE1bTBVWEwreVRwK2l4R1NrTXg3aEd4azdXNGlJK1RFCjdTWWtkcE1wckR0TmQ0NkNDcEVqTDRjcDN3S3FPODNESFpiUmlJQlc0TG5tdjgvRmsxMzl4ZmFWS1UxYThPejYKZUl2N1NBakppQ1Zwaml6N1cyWHZGSU02R0lkaXZxSjV0ZURIVUtWZ2JnSFZWWFd6ZTlGTGZVbldlNnhYeGs3UAo3d0FqaFBBOEtNWDAvU2tOTzlzQ284TzBiVkxnbWhRVFpQZWRCbjQvaVZqais2M1BRUUtDQVFFQTJwbXZLakRuCk1kT3FLdzdjdXNXR0IwTHRkeHpnWXQ4RVZYRnFjZHdRSWs4ajJiams5VGZnR3NlQW1BZnd2bCtwbXoyNDlLSGEKOTk1RmpPU01JZ0FCQUE3MWxWQ1ZQZ1MrOVk4NWVnbXlxNmpVcW1kbHJyWlBpQW00RE85UXo2eElGSlRmTEUxawpXajhlZW9PNkVxTWloN21RMGtrK3g0aEJTRS9QRWJxak1ZRE9OcTd3dWtwNG5WLzJ4eUxSVEFrejhkellRNEVxCjVVSEFlSDZXVVJSTTROY1IveHNaeDFXZzBZZU1QY3lGdy96KzlnUzR2cDlZNkdhangvOVByQWhmSmNpcE0vcTgKRDZaQWZpSCtsbW0yb0IzeGQyUUtHN0JZN1pJeHgvZDRSemtsb0FVaTlraG10c21mSTk1LzVPNjVuWTU0QnZJVwpGQ0JWNEg4ekxueEhzUUtDQVFFQXg2MmpWbUtxcXpjUnR5OHloU3ptVHdCK1dRUkN3MVRPU1d3WCs1aUVpMk9sClVQUVgxMm9vU1Y5UXdxb004S203Z0g2dVR1WGw5aUs3eDVjZzBmWEV5WDJ1NmVZZzhjRm1vUC91V2l0UndpVnIKclNjNlJyQzlwNy9ndVRWUElIWmo0MTBPSE15aTNqSGRlL01rT2UzaDJVa3kzcHhNZTNjcEJ6NTJoUTQxem4zWApSa1BLOUJFM2NoeE41VVd0dVk1dlpYSTFEYWlqYjkxWHlac0VZM2RFSklYeTJVOVovS3MvSjJIdDdRV2NwblpuClNyZHFPQitPa25Qb2NPcHo5R1ZtZVRIdThyMkpyWUxXanUrMWhIc1ZRY09YU3hWWWZnV1k3Ulc3OG9CUlBpamgKSk81eHEvNXNWR1Ywa3o4Si8rdmN1VnFwd0dScG5QUWxGOFVxUUFmSTdRS0NBUUVBaDNQTlQyWm9DNzd0WmFyYQo2VHgxdFZBcVZyRms5TDdlTDVlTWJxcitzRk83a2pCNFp0NU5saXBpcTFIWVFnNkN5UGZ4QUZ5K2t2Sit4RFBtCkJUZGRaMHpkcmJ6MkRTemhxc1VweDAzMUVWc1hFOVBuOU45dzNvbXZLd3lyVlZPYWdtNVE3Mkd4T2g1OFkwdjIKWTVBRVdIZUtubExXZk1zWU1KZUxacC93ZVQ4b0NFaFVVQXJQUEN6M2ZDTTk3MUNRaUdEZy9Nc3Y2a2pZMjVFTQowWWF6c0dwejgxQTJwQWFTRk9OWjZmMHVNZWcxai9vVEE4TTNVeUl1Z0VIYWUyM2dqMGdNV0hJWVQ5WWpoa1RJClBTbWFDUk1reVdjS3dHZUFZdzFBblhqaFpiaXFjTUplREorR1RlTVhJaUcvdS9xVXQyVk5TSGgvWjg4MWgxc3EKT3JhMXNRS0NBUUJJd2ZScVhibGllY1p5d1RmZlh1VHNsSGwxWmlBTm5MRXQvNzBkYUEyajNNTTRKRGtydlByQgpBWUlqN0dLYXJyNHJxLzFIc20yQXFsZFIrcmR5eWVMU3FJRTdxU2NIOERpOUlZUndScWliM1piR21TeWE1WHUxCnpDek9UNlp0WmJZditwQlIzaDdhWjhFVWtSdjZIN3ZUdU9CWVRRdHhVWklabWFFR0NvK0Fsa29DeUdFRFhlS2UKS2NJWWNMTkVrYW4xaFEvZjBqcjdYK1BGQ2o4bkh5WXRTTUdjZlZXRXc4RlhVRStwdGduR2ZnNVZJMUFJOHphNApGcFB6MFBvL2ExTlRoZVpUZk16VjlIN0p4bjZWcjJPbmV1Vjk3bUU0U2tIVzRieUNPRTlpSHZNcXlkZVJuRHRNCjVVcjgvRk5nZFVrUUlRRUpvWXo2Szl2NE5WZVh6VDVoQW9JQkFBb0x0eXI0R2ZONE44eTNXRngwcVZXSWVLcm8Kem5USjNEOW5HYkdTS1pERlRQTmI4blBmWTlLTko1R0hhTHJWWkxnQ3Z1TmtSbWh5OERFNXkwNitEZ2xjQS9ERQp0VHgzdTNvb3ZqNHVBdW1OK2dxR0JLRDZWQ0c1amN1SHZlcUliRGZzbDFaWXlTa2s0MCtjZkVseUN0b01MNUpaCkdLVFlTWi9ReTRDeG1LV1FjYkhBMTJvRXAvWWJPc1cwakxTbk1WREY1VDYyRlY2UkdaL2FkYmFQejYvYm9LQ1kKdEx0cTkzUHhtaFVkMWVaempvZHljRU8zMk5wVnk3T0NYWlhocnZBWmV6Zkp5dDcxcVh6UUhZVWxMQ1BVa2YvZQpDN0l3R2FETUlxNGdCKzFVUDd6bHhXVUlFTnFUVlREZzdVNitCdlhvS3cyZTd3eU4xc1lsOS96UXJvST0KLS0tLS1FTkQgUlNBIFBSSVZBVEUgS0VZLS0tLS0K
+---
+# Source: harbor/templates/jobservice/jobservice-secret-envvars.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: RELEASE-NAME-harbor-jobservice-envvars
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: jobservice
+type: Opaque
+data:
+  REGISTRY_CREDENTIAL_PASSWORD: "aGFyYm9yX3JlZ2lzdHJ5X3Bhc3N3b3Jk"
+---
+# Source: harbor/templates/jobservice/jobservice-secrets.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: RELEASE-NAME-harbor-jobservice
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: jobservice
+type: Opaque
+data:
+  secret: "Y0N5Qzkxb1B5YkZUdGppSw=="
+---
+# Source: harbor/templates/nginx/secret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: RELEASE-NAME-harbor-nginx
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: nginx
+type: Opaque
+data:
+  tls.crt: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURHVENDQWdHZ0F3SUJBZ0lRVHQvUUtiQjNOUjV3QUQ4S3JIMFF4VEFOQmdrcWhraUc5dzBCQVFzRkFEQVUKTVJJd0VBWURWUVFERXdsb1lYSmliM0l0WTJFd0hoY05NakF3T0RFM01ESTFNRFExV2hjTk1qRXdPREUzTURJMQpNRFExV2pBZE1Sc3dHUVlEVlFRREV4SmpiM0psTG1oaGNtSnZjaTVrYjIxaGFXNHdnZ0VpTUEwR0NTcUdTSWIzCkRRRUJBUVVBQTRJQkR3QXdnZ0VLQW9JQkFRRGRnUGpDRWZZOWdYbFNkWmdTb0ZyNU5Lcm1CaDhaSFdGL2EwbkYKdmZ4NFVKMDY1VldqMHVFdFdPa0RkY29mMVFUM1pEelNTZXdEakJxMUdLVXA3SEZFa0NQUE1rc1Z2NWRDOXNEVwpiN0psd2x0UWQvaStKWmFwTXhlMEN3Y3ZMMkthSjQyY1MzQzR3bjdzV21sUjFoNS9idlJHRWxhUUFUWG54aVgrCkp4WUozNGF2SVVSakZLVS92K0k4TGZXM1k2TkdqMUhNeDhrU01BR1BUUkJRNStUczlPZGtnVXZJU0I1RXZyM1kKSHJ6SEp5eWNLOVpuQyt6VURnRVRyNlVOUlhDdWJnclZWNkN1UUNpMmVsZUkwazAwamxIQXFLUFpER3B4clV1dwprTnJMRnhMWmhZYTBZd2tkY0hSbFJPTmZPc2JkSFJuNGprbTYvUjNIbTZ6OHdMOEJBZ01CQUFHalhqQmNNQTRHCkExVWREd0VCL3dRRUF3SUZvREFkQmdOVkhTVUVGakFVQmdnckJnRUZCUWNEQVFZSUt3WUJCUVVIQXdJd0RBWUQKVlIwVEFRSC9CQUl3QURBZEJnTlZIUkVFRmpBVWdoSmpiM0psTG1oaGNtSnZjaTVrYjIxaGFXNHdEUVlKS29aSQpodmNOQVFFTEJRQURnZ0VCQUJBNmJON1lIQkdTYTZtSmxNbG8yMkFLVCtVK2lRQlpFVWtudUo2Z1ozVEMrMXlDCldWVGpCRlZIWDYvSUV3VTF4NHVEb0J4OUJBSll0bUF2QjBsYkI1REtYWVpobUhiV2ZQZktkRUFaTC96a1dLSzgKTzJ4ckJQalVnV2Y5ODl0dFBaR1RXS282cE1mRnJVUUt1VU1PeXF6bmk4UlEwOStsTlZaVkJsQWZweDB5MEUyQwp0ZXVLM2RxUzJZMkE4ditBeUxyUWh4V25YRDNUczNZU21TOUNGdVN2b2NJRDVQcHRjcnMxODJDQm0xcXB5dkVjCitzdWFPcDRlS0Fsa1B6WkJXaTBSb09qbzJPdDBPRGw3am9QUkEzM2JIODgzOHRMNjN0enJRUVRiODZwUDQwakcKbWlqNHN3bGh1ZVhZMWFNR240VHJtc1VKREZPVG00WTdrUUpNWEVJPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg=="
+  tls.key: "LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFcFFJQkFBS0NBUUVBM1lENHdoSDJQWUY1VW5XWUVxQmErVFNxNWdZZkdSMWhmMnRKeGIzOGVGQ2RPdVZWCm85TGhMVmpwQTNYS0g5VUU5MlE4MGtuc0E0d2F0UmlsS2V4eFJKQWp6ekpMRmIrWFF2YkExbSt5WmNKYlVIZjQKdmlXV3FUTVh0QXNITHk5aW1pZU5uRXR3dU1KKzdGcHBVZFllZjI3MFJoSldrQUUxNThZbC9pY1dDZCtHcnlGRQpZeFNsUDcvaVBDMzF0Mk9qUm85UnpNZkpFakFCajAwUVVPZms3UFRuWklGTHlFZ2VSTDY5MkI2OHh5Y3NuQ3ZXClp3dnMxQTRCRTYrbERVVndybTRLMVZlZ3JrQW90bnBYaU5KTk5JNVJ3S2lqMlF4cWNhMUxzSkRheXhjUzJZV0cKdEdNSkhYQjBaVVRqWHpyRzNSMForSTVKdXYwZHg1dXMvTUMvQVFJREFRQUJBb0lCQVFEU1lKMWpqYlhIUXdLYwp5KzJNdTFyTVdEWjgxSkdTdy9JSEdEcHdJbnI1TnUrdXNZUytYUnJiZkJlTDNzTURxc25Wd2hGMlZSbGhZUjg0Cm8xaXpVY3RlcUZ3cWZZVU0rZlJMZUpzOHo4ZXJtSVlzRGxabEdzUlduWjFFdGppem14aldldnluMW9zUUlFSjIKYjRTYVluaUM1am9CbDRjNXJMeXJEdXFrMGpDL1hCWkNoZk41NXhLcTdhTEg5ZFl0Yjc1SGJzSUxPZVVZcGhIaAoyVW1mNXpiRk45ckd1RFJLbDF4YXc1L3BPMXNqdjVyMWx6Nkw3ME8xNkRPWTVISW41LzdMVjhiVUVPcGhjRk15CjF1aTVJbm5nV2ZqK25MZ1I3QWdxTC95OTN4N29hUDZkSzdRdlFDdmpaRG5LQXloallUOHp2QzdDaWR0ODlLWlEKM3NhQmlCaWxBb0dCQVBVb20wQ3kyM3NQSkFCQk4wVVJidE9CeVA1UERRSG9zcSs1dzFhKzNNTGdIVzRycytzNwpLL2wxTEl0SDlIL21icjJ3bmwvaC84Tmhadit5bkxJV29nVHFCczZ5TW4yZTRQUWJDODQxM2RjY3RCZnppRE10CmVIS29tNG5tRXdaZit1cHZXazYyM0dvQkRuSmd1R2VibmZ4b0cwdlNpMythSUhuc2M5WmpWcmo3QW9HQkFPZE0Ka3RSdjd5WWNLSzlaZkRDNEdBOHR3LzhRWlV6OVhPSlVLbW5TcVBoenBHV2RLSVU2MWMrMWF3SVhLNFlKRjdESwpJN2Y5aGlISStNVDlxT04wOFBQRWFMMU8ya1kzLzhoQ1ovWStIRXd5YmdxekJpbzFHdGFFS0xzMC9oWjBneUFWCjdmY3lvZnFxMGY1NHVRRzdTaW1teTNjV0VDZnU5UE1ZU2FDWTRwOHpBb0dCQUozajZSbGlGN2pKcDRZQ2VuWWgKSkI5VUZ2NnlLczV2NzZUOUhyRmZldzZIQ0cxTCtEUW5oOHJCakU2bnFQQTJtRnZTeEMwOGdGeDAvc0R2Wjd2SwpsODVTYXMvME5GQnpZcTNVUFdZeGl3NWZqaDFlMnZrYTc5Zm9mMFB3eVkveGdNZzdydzNDOTNITi9GL3RxdFlQCmcxQnNQQ2c1RVY2OUJPMkJPNWwzb1FMQkFvR0FMcXIxaVNWWWhFRDBPSVQrbUxuY0tOdmNDcytkRU02aCtneHYKVGxDeHhRZFlLU1J2YzRvdWI2MHovUVQ5eEJwN2pERU15ZWUrTTN6Z0xLYmRkNTgxcW9sN2RJNi9YYUdZMnlnQwozOTBpU29GMlVIUlVqeG1ONDdCZ28zMEtzeThvOGNWYThTQm5MRE5oRVUzOFRnd2k1NHArelBWSHB6Y0FkemYwClN4SHR6NThDZ1lFQTZsMWp2MStYZFJNMmxmd1RwTzhvL1dobHR1TEFyc3hENEFpYzAwVEI5RmpiV3BlR3Q4QzEKUHpPcnRVNGk1VzlxREExaEkwMDBkMi9ZdXVHVVA1c1JkQ3YzellVUDdBOURhaEY3dFZ6UFlaM1NoTGx3OG5VVgpISUl3cTJLL3FPOVliUk1rcXN0K1pNOStRV2p5cWN5UHk2TDRhV3NwYUlnTW9rRVdSQ3BTZEdzPQotLS0tLUVORCBSU0EgUFJJVkFURSBLRVktLS0tLQo="
+  ca.crt: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM5RENDQWR5Z0F3SUJBZ0lRRjh4YUplSk1KSVZaYUFsdlNPRjMyREFOQmdrcWhraUc5dzBCQVFzRkFEQVUKTVJJd0VBWURWUVFERXdsb1lYSmliM0l0WTJFd0hoY05NakF3T0RFM01ESTFNRFEwV2hjTk1qRXdPREUzTURJMQpNRFEwV2pBVU1SSXdFQVlEVlFRREV3bG9ZWEppYjNJdFkyRXdnZ0VpTUEwR0NTcUdTSWIzRFFFQkFRVUFBNElCCkR3QXdnZ0VLQW9JQkFRRGVyRHVHbFRQTTk4ZW5XTDAvcHgvdEh1azhQejNQek4yQTBXOHBDVDVPYVE4b0xDelcKZUNCRERWZHNFRWl2azhtRGM4ditacVA2Tm1QdFgyd1ora29zOHR6TXBFZEtFN2pPTzZON3ZXTFdCQ2htc0ZzQQpuZjRPUEpKZ2RkSCtrQk1vbzhXTGJOVXBPd0QvdHp2N0Z0Q2JOc09XMlphWFhwRlc5b09IOW9zMDRyeVFxcXFYCm5ENmN6WEJHSEpzaUtTSStJd242TDBjSk1KOGVnbHNZOW5hdWdRcjhTcE5jYTNWUmVxRmpEWjhDaXpNVG1LdE0KRTQyOWF3Y3QyV1UvVWxDaG1pcmVTNk85bFNsRU1aQURCcG5mbkR6VmNWeUlkMzZFWnlwSGFDY3IrSE5nMFlsWAppS055Y0VwRzl0Zm1NNzRUSGsrSTdyN1ZnblpYT0FjWjdPR1JBZ01CQUFHalFqQkFNQTRHQTFVZER3RUIvd1FFCkF3SUNwREFkQmdOVkhTVUVGakFVQmdnckJnRUZCUWNEQVFZSUt3WUJCUVVIQXdJd0R3WURWUjBUQVFIL0JBVXcKQXdFQi96QU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFPUHlLaTBaTkswa21VZVYwV2JUMUlGSnlhbWxEQWRDcQo0MWEzL3B6NExGMHdmMDJpaWdrcDBYZWZXSmZXT2JmaDJGSk1hc251cDRrcVNIWEV4dkZiemJBbytHWmhxVUJ1CkZuU1pqTGovcDcreTRSZTFiYVJKWkd1ZEtWM0RFZVo1bDRuTVBWWktOTEk0dkMxcUFzTTZMSEdEUkN1blRlOVEKek9FYVN4cE9iVUVlYVAxU2xCTk5XeEdSY1FlaWUxemJESlhQZmtXQmJXM1pQWVc2Sm9KVkQrUEk3bTVlRjZuYQpJMEVKbVNHKzl5d0YyV05XT2tEc0hCQVV2UFBsTmh3RDFLQW00ZEc0cmVrL25SSWFGenY3cFplTC9jVHJJNmpwCmFRRnBXLzJzcmI2UkZ5WTNOVG9wU28xK054Vm05WmlaaVFnRFRLeXQyd0NwU2V5Ni9KMDFmdz09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K"
+---
+# Source: harbor/templates/notary/notary-secret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: RELEASE-NAME-harbor-notary-server
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: notary
+type: Opaque
+data:
+  
+  
+  notary-signer-ca.crt: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURBekNDQWV1Z0F3SUJBZ0lSQU83U1hGLzVhRy9YRWdwL21ZZVg3TDh3RFFZSktvWklodmNOQVFFTEJRQXcKR3pFWk1CY0dBMVVFQXhNUWFHRnlZbTl5TFc1dmRHRnllUzFqWVRBZUZ3MHlNREE0TVRjd01qVXdORFJhRncweQpNVEE0TVRjd01qVXdORFJhTUJzeEdUQVhCZ05WQkFNVEVHaGhjbUp2Y2kxdWIzUmhjbmt0WTJFd2dnRWlNQTBHCkNTcUdTSWIzRFFFQkFRVUFBNElCRHdBd2dnRUtBb0lCQVFDZUhBSW84eTAydUxEb2l4SmkxNktoTTVEbnBDaEYKS0E2M0dvdjZBUVV6WlpoY1lKTGNwZjVxVytLbkF0WENUTFFHSUFmV0lobFl5WFpkOHczei85VFNSUVk5MEJodQpOR3pNMmkrL1JXVFVnbUt5WDJpc2hjUkFxSHFvMEVJQ2VJbmplelJhTnNYK0N6Z3psTDNLTFN2dGxNcG9seFpFCjhTNnFWUVpYQXN4RFZmUExOTU1QOW9NTzcvY3A4QVlyaFJmaWgvaDFLK1hKa0ptaklxdTRFcmxTYXNrUlBSTnIKdW5wRXVOZUtoTTdQUjBveHZYYjY5aHhDaHprTjBhamVaa0NHbHpRSlhzblVtTGVtM2hKcFJPVGtQdTZPbjIzdAo0bjNtZy9wRXUwYXVSVllqandUcEFFTWFhM0F0SHNwaW1oNDhBYlBiQ1hWdkpYOENKSGkvTVRvSEFnTUJBQUdqClFqQkFNQTRHQTFVZER3RUIvd1FFQXdJQ3BEQWRCZ05WSFNVRUZqQVVCZ2dyQmdFRkJRY0RBUVlJS3dZQkJRVUgKQXdJd0R3WURWUjBUQVFIL0JBVXdBd0VCL3pBTkJna3Foa2lHOXcwQkFRc0ZBQU9DQVFFQVJ6a1krZHUzMmhiTAo4MTBJVWR0dFNZQXVOS2lxYm91YlVibjh5L0daOWdwOHZkQS9KRWsxN3lEay85ZVU4ZnFMeTY1MHJkREhZczFOCjhucFRlVjc1dnhwVUk1dlJSN1ZZM2dWMlJCbFNVa2xXbWFRdDlRWHoyS1VYZEMrVk9iaHdFMDZ6Mjl5cG1aV1UKQmR3aWo1TjNpWExaMzIrQy9rLzd1R0d4YUdBWVRZQkVlNFVLdncxTlNwdVVZODA3azkvdnRQVDNZY0wxMlBsSgpwV0hwSFRLUlJzcTArUXJ6VzdjNFB0KzVPZ0RvcXhmbVpubXRJMlY1Q1ZxZmY4M09EYmRvUWtIQm4rR3M1SmljClpoc2xhME1PbUtHMWJqYVh5S2FZamlEQllCejIwRmRhZFdYMlpCcVk4TzBkKzJPL1ozWXVNLzgrVFQyUW0wN1cKR1BFK2NwbmR3UT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K"
+  notary-signer.crt: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURFVENDQWZtZ0F3SUJBZ0lSQU9UWTliOEZEc244aFBtdWVzR2RxMFl3RFFZSktvWklodmNOQVFFTEJRQXcKR3pFWk1CY0dBMVVFQXhNUWFHRnlZbTl5TFc1dmRHRnllUzFqWVRBZUZ3MHlNREE0TVRjd01qVXdORFJhRncweQpNVEE0TVRjd01qVXdORFJhTUN3eEtqQW9CZ05WQkFNVElWSkZURVZCVTBVdFRrRk5SUzFvWVhKaWIzSXRibTkwCllYSjVMWE5wWjI1bGNqQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ0VCQU5KWDRJWk0KMWJZMlI5QSs3UkJEU1V5RFJ4ZzJvS0cxQXpiK3BHVEtXTUhnUFdXWXUwNmpBcFh5cVJkQkNscFNScnQ2RkZyUApDMkYyT0FUYTd5THJDK0hPSnBnWDBxNmtFTndVOStSNG5lQ0ZCSjJ2YkpuWHN4Zkp1amZoZHhkT1RGT0Q0ZFhWCkFGbGk2R2kxYVNBWWxvam5aNTVTZ2RxN2NnVlRRTERJZnArYkgxREM2MFlvOFdTdEpGT2t1ZHNCWjhQeFE1UEUKNWNacmR5T2V5aFlRd1ZFRlFmeWxEY2o1NzNKRmUrWDAwMU04WDZ4OXpCa1FDTkw0bzVuSVR6Q2swSWk3SmZzZgpZTG9xS0hpY0tzMGJHYW40c1pwZXMrdDRVZXE1T0RDdW5zNnRqR3IxdmthckQzeFlMSW1UbUpGbklKVCtUS1U3CkF2NE9RK09wK2hjN2VBa0NBd0VBQWFNL01EMHdEZ1lEVlIwUEFRSC9CQVFEQWdXZ01CMEdBMVVkSlFRV01CUUcKQ0NzR0FRVUZCd01CQmdnckJnRUZCUWNEQWpBTUJnTlZIUk1CQWY4RUFqQUFNQTBHQ1NxR1NJYjNEUUVCQ3dVQQpBNElCQVFBaHY4b0FYb1VTdWVVVWJpVnY3SzhNUnhreEZLeXpuaEhvUzh2NkNMTTZWQkRrTGZXVTJUcVBnSzVRClhKUUNnSkxkbHdvYjUwU2EvZFpvTkRZb3JyZHUwWlFZV0RWZlVTdFY0L3pXUHpPWjNjd1JFanFTVEtGMFhLRFoKK3VPbWpHaTFrUVlnY2tWQVBXRzNhS0VWVmZPMEZKbVJ3K0M2VUE4cGgxRXU5bGZ0Y0RlVk1reEZkRk14MERJOQpFUGF2cWxKVGdYUzBlU3lQWGxIWENRTVZvS1ZVSXFLRDh2UjF1SGZKaXpNZWVMNEZmSGFwYXpwRDZQaTBybC9zCm9DaFI4NDVMQ1B0K1dnSC9SWW1zV3VVUmE1b3RqMkJ2ZkNwVGZJMVRrR0hTOFZvV0ZqZWdjUFAvYTFjaHdza2cKMEIrb2IyUTBISjFEcmFtTXlNcVQ3eUJzQ24vVgotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg=="
+  notary-signer.key: "LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFcFFJQkFBS0NBUUVBMGxmZ2hrelZ0alpIMEQ3dEVFTkpUSU5IR0RhZ29iVUROdjZrWk1wWXdlQTlaWmk3ClRxTUNsZktwRjBFS1dsSkd1M29VV3M4TFlYWTRCTnJ2SXVzTDRjNG1tQmZTcnFRUTNCVDM1SGlkNElVRW5hOXMKbWRlekY4bTZOK0YzRjA1TVU0UGgxZFVBV1dMb2FMVnBJQmlXaU9kbm5sS0IycnR5QlZOQXNNaCtuNXNmVU1McgpSaWp4Wkswa1U2UzUyd0Zudy9GRGs4VGx4bXQzSTU3S0ZoREJVUVZCL0tVTnlQbnZja1Y3NWZUVFV6eGZySDNNCkdSQUkwdmlqbWNoUE1LVFFpTHNsK3g5Z3Vpb29lSndxelJzWnFmaXhtbDZ6NjNoUjZyazRNSzZlenEyTWF2VysKUnFzUGZGZ3NpWk9Za1djZ2xQNU1wVHNDL2c1RDQ2bjZGenQ0Q1FJREFRQUJBb0lCQVFDbUQ3SzIxSm8wakk0TgpubUJTWW96UDF5U2R2U0w4QjRoT05xTmEzMVZMV3RtZUNBSjRoc0ZYMklnZVQ3NzRwOVFuMXEyVE03cHNhNFMyCmNKSXpJeFh5WTJxYzBOSUlCb2M0K1dUci96M0ZMNzhCTHFteW0xUk5CM240L0F1bFhxOXJqOGNQcG1Yc0srWUkKSkpDbVFrTTJPbHJYNTVPVk9EOUFiUVc1aTlCTCtDQjVrb3Q4V0o1Z0VsVUorVkVxK3dHUWVhekQvUTRiTkxXTApXY1V4NTRyNjFta0h0Sk5uaDN2bGxqQ2ZkWHNxTit1WEVteUlxbkd1K0l6NTNFd0lEZ3FyM0VUL3hULzVhVE9yCmFIdVF6STBobU9ja2VQYmIrdG5KVVVrZVFoYmpSR2RBdy8yNitWeFdBTkxRdFY0QktWaGIxZUU5UitNeGdOVHgKanREWlFqYkJBb0dCQVBndXRLUzJuUXhVRnU5OWRrRE82N3VqS0k5VkV1NUoyUTBvRXZSRWZsTnk0ZTlMYmlYMwpOdERVUnhsUjdkQlRjdlJsRmw1V0FTRDlhbExHcnNQVUlTaGp0dmxSQjRxc2VOOVAydm9obnc3bjFXR0JGSVl4CkJneUtnZXFaVWNuSXhwdkNYL1JjVXAvbXV1ZmM0V2hnYlNsVE5JTWhNSktlRW8ySTNNT1JWVnZGQW9HQkFOajQKQ3pQbkxvR1NHT2NFRU5sOUVuYW5sZ2hGTjZCblhJN3ByWml2WG5rRXFpbGJqTWpFTU4xd2NaUS9BM1RDeGx5OAp3Wm1HWWgzQ0prRG1oMHdnWmVDVWNrVGVjeDFlTjZTdzFyQkIveHdwL2cvam5ZWGZ1WUxFZTdDTXdpaGdqTE1BCndrbDBsNGlwd1krM0tpdFVkeU5ZbUxNVG51NHpidGlGdXVUblM5dDFBb0dBZThsUDhKZmszVEZUL3ova3E0NkoKcFoxTHJiSVJMeWxHU1htamVwSnZMOUF0UU4ydW91RWJSaTJiQ05ZRWQ5UW5raDZaZVpRTUhCaEozOStaYTdOeQpsbUtsOE5TcG5sRklPSm5yN3JhMlR3anpOUjdjemRIRjRwdHpFVUJIdXcyWmdqY0JCVERIUlZvZi8yWDhSOE5RCnJ6d0JCU2FZdzRoMFdJUGJHUEIwVXNFQ2dZRUFuODBKQzBCUk8zTnNUZkhycXhQNFhsWU9KYWM5VWpIdXRQK2QKTVNDdzF6YzlVTnF4OVVpeXFOWGhnWXRyc3pxbHVMWDViV2JScXhOTTgyNFc1bFhTVXpkaWRpRFU3aU52bmlmMAo1N3FqOTQxaUp6ZkExRkkwSXdFdURKbVBnd2VoZVZHc3gwZE5PSVczSDIrTGFvQjZneGtFMXBnejdVTUtlQVQrCjR3c01EdVVDZ1lFQTVld3dpZC9UWjVaV0piOUg4STFaSTlqc0lzd29JNkd4S1pseU5VdFkvNWFaVFdoT2hlTjkKajhpU05yVlJzQmN0OTY4L1A0QlRUZEkzRmJ1Z2dHUGZIeTVocnRSeW5ldzBNSm5BSy9HOEEvbnByT2FSUTVlSwpEYks2NlFBMnVrWEtDTDNJbktWNkJNbFZVb1VtbTZldEZMRW4zVUJ1TnRtL0pHTkk3dGVGTHFzPQotLS0tLUVORCBSU0EgUFJJVkFURSBLRVktLS0tLQo="
+  server-config.postgres.json: ewogICJzZXJ2ZXIiOiB7CiAgICAiaHR0cF9hZGRyIjogIjo0NDQzIgogIH0sCiAgInRydXN0X3NlcnZpY2UiOiB7CiAgICAidHlwZSI6ICJyZW1vdGUiLAogICAgImhvc3RuYW1lIjogIlJFTEVBU0UtTkFNRS1oYXJib3Itbm90YXJ5LXNpZ25lciIsCiAgICAicG9ydCI6ICI3ODk5IiwKICAgICJ0bHNfY2FfZmlsZSI6ICIvZXRjL25vdGFyeS9ub3Rhcnktc2lnbmVyLWNhLmNydCIsCiAgICAia2V5X2FsZ29yaXRobSI6ICJlY2RzYSIKICB9LAogICJsb2dnaW5nIjogewogICAgImxldmVsIjogImRlYnVnIgogIH0sCiAgInN0b3JhZ2UiOiB7CiAgICAiYmFja2VuZCI6ICJwb3N0Z3JlcyIsCiAgICAiZGJfdXJsIjogInBvc3RncmVzOi8vcG9zdGdyZXM6bm90LXNlY3VyZS1kYXRhYmFzZS1wYXNzd29yZEBSRUxFQVNFLU5BTUUtcG9zdGdyZXNxbDo1NDMyL25vdGFyeXNlcnZlcj9zc2xtb2RlPWRpc2FibGUiCiAgfSwKICAiYXV0aCI6IHsKICAgICAgInR5cGUiOiAidG9rZW4iLAogICAgICAib3B0aW9ucyI6IHsKICAgICAgICAgICJyZWFsbSI6ICJodHRwczovL2NvcmUuaGFyYm9yLmRvbWFpbi9zZXJ2aWNlL3Rva2VuIiwKICAgICAgICAgICJzZXJ2aWNlIjogImhhcmJvci1ub3RhcnkiLAogICAgICAgICAgImlzc3VlciI6ICJoYXJib3ItdG9rZW4taXNzdWVyIiwKICAgICAgICAgICJyb290Y2VydGJ1bmRsZSI6ICIvcm9vdC5jcnQiCiAgICAgIH0KICB9Cn0K
+  signer-config.postgres.json: ewogICJzZXJ2ZXIiOiB7CiAgICAiZ3JwY19hZGRyIjogIjo3ODk5IiwKICAgICJ0bHNfY2VydF9maWxlIjogIi9ldGMvbm90YXJ5L25vdGFyeS1zaWduZXIuY3J0IiwKICAgICJ0bHNfa2V5X2ZpbGUiOiAiL2V0Yy9ub3Rhcnkvbm90YXJ5LXNpZ25lci5rZXkiCiAgfSwKICAibG9nZ2luZyI6IHsKICAgICJsZXZlbCI6ICJkZWJ1ZyIKICB9LAogICJzdG9yYWdlIjogewogICAgImJhY2tlbmQiOiAicG9zdGdyZXMiLAogICAgImRiX3VybCI6ICJwb3N0Z3JlczovL3Bvc3RncmVzOm5vdC1zZWN1cmUtZGF0YWJhc2UtcGFzc3dvcmRAUkVMRUFTRS1OQU1FLXBvc3RncmVzcWw6NTQzMi9ub3RhcnlzaWduZXI/c3NsbW9kZT1kaXNhYmxlIiwKICAgICJkZWZhdWx0X2FsaWFzIjogImRlZmF1bHRhbGlhcyIKICB9Cn0K
+---
+# Source: harbor/templates/registry/registry-secret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: RELEASE-NAME-harbor-registry
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+type: Opaque
+data:
+  REGISTRY_HTPASSWD: "aGFyYm9yX3JlZ2lzdHJ5X3VzZXI6JDJ5JDEwJDlMNFRjMERKYkZGTUI2UmRTQ3Vuck9wVEhkd2hpZDRrdEJKbUxEMDBiWWdxa2tHT3ZsbDNt"
+  REGISTRY_HTTP_SECRET: "dFIzNEh5TmlJQlNoWjRvWA=="
+  REGISTRY_REDIS_PASSWORD: ""
+---
+# Source: harbor/templates/trivy/trivy-secret-envvars.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: RELEASE-NAME-harbor-trivy-envvars
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: trivy
+type: Opaque
+data:
+  SCANNER_TRIVY_GITHUB_TOKEN: ""
+  SCANNER_STORE_REDIS_URL: cmVkaXM6Ly9SRUxFQVNFLU5BTUUtcmVkaXMtbWFzdGVyOjYzNzkvNQ==
+  SCANNER_JOB_QUEUE_REDIS_URL: cmVkaXM6Ly9SRUxFQVNFLU5BTUUtcmVkaXMtbWFzdGVyOjYzNzkvNQ==
+---
+# Source: harbor/charts/postgresql/templates/initialization-configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: RELEASE-NAME-postgresql-init-scripts
+  labels:
+    app.kubernetes.io/name: postgresql
+    helm.sh/chart: postgresql-9.1.4
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+data:
+  initial-notaryserver.sql: |
+    CREATE DATABASE notaryserver;
+    CREATE USER server;
+    alter user server with encrypted password 'password';
+    GRANT ALL PRIVILEGES ON DATABASE notaryserver TO server;
+  initial-notarysigner.sql: |
+    CREATE DATABASE notarysigner;
+    CREATE USER signer;
+    alter user signer with encrypted password 'password';
+    GRANT ALL PRIVILEGES ON DATABASE notarysigner TO signer;
+  initial-registry.sql: |
+    CREATE DATABASE registry ENCODING 'UTF8';
+    \c registry;
+    CREATE TABLE schema_migrations(version bigint not null primary key, dirty boolean not null);
+---
+# Source: harbor/charts/redis/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: RELEASE-NAME-redis
+  namespace: default
+  labels:
+    app: redis
+    chart: redis-10.7.13
+    heritage: Helm
+    release: RELEASE-NAME
+data:
+  redis.conf: |-
+    # User-supplied configuration:
+    # Enable AOF https://redis.io/topics/persistence#append-only-file
+    appendonly yes
+    # Disable RDB persistence, AOF persistence already enabled.
+    save ""
+  master.conf: |-
+    dir /data
+    rename-command FLUSHDB ""
+    rename-command FLUSHALL ""
+  replica.conf: |-
+    dir /data
+    slave-read-only yes
+    rename-command FLUSHDB ""
+    rename-command FLUSHALL ""
+---
+# Source: harbor/charts/redis/templates/health-configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: RELEASE-NAME-redis-health
+  namespace: default
+  labels:
+    app: redis
+    chart: redis-10.7.13
+    heritage: Helm
+    release: RELEASE-NAME
+data:
+  ping_readiness_local.sh: |-
+    #!/bin/bash
+    response=$(
+      timeout -s 3 $1 \
+      redis-cli \
+        -h localhost \
+        -p $REDIS_PORT \
+        ping
+    )
+    if [ "$response" != "PONG" ]; then
+      echo "$response"
+      exit 1
+    fi
+  ping_liveness_local.sh: |-
+    #!/bin/bash
+    response=$(
+      timeout -s 3 $1 \
+      redis-cli \
+        -h localhost \
+        -p $REDIS_PORT \
+        ping
+    )
+    if [ "$response" != "PONG" ] && [ "$response" != "LOADING Redis is loading the dataset in memory" ]; then
+      echo "$response"
+      exit 1
+    fi
+  ping_readiness_master.sh: |-
+    #!/bin/bash
+     response=$(
+      timeout -s 3 $1 \
+      redis-cli \
+        -h $REDIS_MASTER_HOST \
+        -p $REDIS_MASTER_PORT_NUMBER \
+        ping
+    )
+    if [ "$response" != "PONG" ]; then
+      echo "$response"
+      exit 1
+    fi
+  ping_liveness_master.sh: |-
+    #!/bin/bash
+    response=$(
+      timeout -s 3 $1 \
+      redis-cli \
+        -h $REDIS_MASTER_HOST \
+        -p $REDIS_MASTER_PORT_NUMBER \
+        ping
+    )
+    if [ "$response" != "PONG" ] && [ "$response" != "LOADING Redis is loading the dataset in memory" ]; then
+      echo "$response"
+      exit 1
+    fi
+  ping_readiness_local_and_master.sh: |-
+    script_dir="$(dirname "$0")"
+    exit_status=0
+    "$script_dir/ping_readiness_local.sh" $1 || exit_status=$?
+    "$script_dir/ping_readiness_master.sh" $1 || exit_status=$?
+    exit $exit_status
+  ping_liveness_local_and_master.sh: |-
+    script_dir="$(dirname "$0")"
+    exit_status=0
+    "$script_dir/ping_liveness_local.sh" $1 || exit_status=$?
+    "$script_dir/ping_liveness_master.sh" $1 || exit_status=$?
+    exit $exit_status
+---
+# Source: harbor/templates/chartmuseum/chartmuseum-cm-envvars.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: RELEASE-NAME-harbor-chartmuseum-envvars
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: chartmuseum
+data:
+  PORT: "9999"
+  CACHE: "redis"
+  CACHE_REDIS_ADDR: "RELEASE-NAME-redis-master:6379"
+  CACHE_REDIS_DB: "3"
+  # The user is hardcoded because the core binary has it hardcoded so it is not configurable.
+  BASIC_AUTH_USER: "chart_controller"
+  DEPTH: "1"
+  DEBUG: "true"
+  LOG_JSON: "false"
+  DISABLE_METRICS: "false"
+  DISABLE_API: "false"
+  DISABLE_STATEFILES: "false"
+  ALLOW_OVERWRITE: "true"
+  AUTH_ANONYMOUS_GET: "false"
+  STORAGE: "local"
+  STORAGE_LOCAL_ROOTDIR: "/bitnami/data"
+---
+# Source: harbor/templates/core/core-cm-envvars.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: RELEASE-NAME-harbor-core-envvars
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: core
+data:
+  DATABASE_TYPE: "postgresql"
+  POSTGRESQL_HOST: "RELEASE-NAME-postgresql"
+  POSTGRESQL_PORT: "5432"
+  POSTGRESQL_USERNAME: "postgres"
+  POSTGRESQL_DATABASE: "registry"
+  POSTGRESQL_SSLMODE: "disable"
+  EXT_ENDPOINT: "https://core.harbor.domain"
+  CORE_URL: "http://RELEASE-NAME-harbor-core:80"
+  JOBSERVICE_URL: "http://RELEASE-NAME-harbor-jobservice"
+  REGISTRY_URL: "http://RELEASE-NAME-harbor-registry:5000"
+  TOKEN_SERVICE_URL: "http://RELEASE-NAME-harbor-core:80/service/token"
+  WITH_NOTARY: "true"
+  NOTARY_URL: "http://RELEASE-NAME-harbor-notary-server:4443"
+  CFG_EXPIRATION: "5"
+  ADMIRAL_URL: "NA"
+  WITH_CLAIR: "true"
+  CLAIR_DB_HOST: "RELEASE-NAME-postgresql"
+  CLAIR_DB_PORT: "5432"
+  CLAIR_DB_USERNAME: "postgres"
+  CLAIR_DB: "postgres"
+  CLAIR_DB_SSLMODE: "disable"
+  CLAIR_URL: "http://RELEASE-NAME-harbor-clair:6060"
+  CLAIR_ADAPTER_URL: "http://RELEASE-NAME-harbor-clair:8080"
+  WITH_TRIVY: "true"
+  TRIVY_ADAPTER_URL: "http://RELEASE-NAME-harbor-trivy:8080"
+  REGISTRY_STORAGE_PROVIDER_NAME: "filesystem"
+  WITH_CHARTMUSEUM: "true"
+  CHART_REPOSITORY_URL: "http://RELEASE-NAME-harbor-chartmuseum"
+  LOG_LEVEL: "debug"
+  CONFIG_PATH: "/etc/core/app.conf"
+  SYNC_REGISTRY: "false"
+  CHART_CACHE_DRIVER: "redis"
+  PORTAL_URL: "http://RELEASE-NAME-harbor-portal"
+  REGISTRY_CONTROLLER_URL: "http://RELEASE-NAME-harbor-registry:8080"
+  REGISTRY_CREDENTIAL_USERNAME: "harbor_registry_user"
+  HTTP_PROXY: ""
+  HTTPS_PROXY: ""
+  NO_PROXY: "RELEASE-NAME-harbor-core,RELEASE-NAME-harbor-jobservice,RELEASE-NAME-harbor-database,RELEASE-NAME-harbor-chartmuseum,RELEASE-NAME-harbor-clair,RELEASE-NAME-harbor-notary-server,RELEASE-NAME-harbor-notary-signer,RELEASE-NAME-harbor-registry,RELEASE-NAME-harbor-portal,RELEASE-NAME-harbor-trivy,127.0.0.1,localhost,.local,.internal"
+---
+# Source: harbor/templates/core/core-cm.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: RELEASE-NAME-harbor-core
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: core
+data:
+  app.conf: |+
+    appname = Harbor
+    runmode = dev
+    enablegzip = true
+
+    [dev]
+    httpport = 8080
+---
+# Source: harbor/templates/jobservice/jobservice-cm-envvars.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: RELEASE-NAME-harbor-jobservice-envvars
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: jobservice
+data:
+  CORE_URL: "http://RELEASE-NAME-harbor-core:80"
+  TOKEN_SERVICE_URL: "http://RELEASE-NAME-harbor-core:80/service/token"
+  REGISTRY_URL: "http://RELEASE-NAME-harbor-registry:5000"
+  REGISTRY_CONTROLLER_URL: "http://RELEASE-NAME-harbor-registry:8080"
+  REGISTRY_CREDENTIAL_USERNAME: "harbor_registry_user"
+  HTTP_PROXY: ""
+  HTTPS_PROXY: ""
+  NO_PROXY: "RELEASE-NAME-harbor-core,RELEASE-NAME-harbor-jobservice,RELEASE-NAME-harbor-database,RELEASE-NAME-harbor-chartmuseum,RELEASE-NAME-harbor-clair,RELEASE-NAME-harbor-notary-server,RELEASE-NAME-harbor-notary-signer,RELEASE-NAME-harbor-registry,RELEASE-NAME-harbor-portal,RELEASE-NAME-harbor-trivy,127.0.0.1,localhost,.local,.internal"
+  LOG_LEVEL: "debug"
+---
+# Source: harbor/templates/jobservice/jobservice-cm.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: RELEASE-NAME-harbor-jobservice
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: jobservice
+data:
+  config.yml: |+
+    #Server listening port
+    protocol: "http"
+    port: 8080
+    worker_pool:
+      workers: 10
+      backend: "redis"
+      redis_pool:
+        redis_url: "RELEASE-NAME-redis-master:6379/1"
+        namespace: "harbor_job_service_namespace"
+    job_loggers:
+      - name: "FILE"
+        level: DEBUG
+        settings: # Customized settings of logger
+          base_dir: "/var/log/jobs"
+        sweeper:
+          duration: 14 #days
+          settings: # Customized settings of sweeper
+            work_dir: "/var/log/jobs"
+    #Loggers for the job service
+    loggers:
+      - name: "STD_OUTPUT"
+        level: DEBUG
+---
+# Source: harbor/templates/nginx/configmap-https.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: RELEASE-NAME-harbor-nginx
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: nginx
+data:
+  nginx.conf: |+
+    worker_processes auto;
+    pid /opt/bitnami/nginx/tmp/nginx.pid;
+
+    events {
+      worker_connections 1024;
+      use epoll;
+      multi_accept on;
+    }
+
+    http {
+      client_body_temp_path  "/opt/bitnami/nginx/tmp/client_body" 1 2;
+      proxy_temp_path        "/opt/bitnami/nginx/tmp/proxy" 1 2;
+      fastcgi_temp_path      "/opt/bitnami/nginx/tmp/fastcgi" 1 2;
+      scgi_temp_path         "/opt/bitnami/nginx/tmp/scgi" 1 2;
+      uwsgi_temp_path        "/opt/bitnami/nginx/tmp/uwsgi" 1 2;
+
+      tcp_nodelay on;
+
+      # this is necessary for us to be able to disable request buffering in all cases
+      proxy_http_version 1.1;
+
+      upstream core {
+        server "RELEASE-NAME-harbor-core:80";
+      }
+
+      upstream portal {
+        server "RELEASE-NAME-harbor-portal:80";
+      }
+      upstream notary-server {
+        server RELEASE-NAME-harbor-notary-server:4443;
+      }
+
+      log_format timed_combined '[$time_local]:$remote_addr - '
+        '"$request" $status $body_bytes_sent '
+        '"$http_referer" "$http_user_agent" '
+        '$request_time $upstream_response_time $pipe';
+
+      access_log /dev/stdout timed_combined;
+      server {
+        listen 4443 ssl;
+        server_tokens off;
+        # ssl
+        ssl_certificate /etc/nginx/cert/tls.crt;
+        ssl_certificate_key /etc/nginx/cert/tls.key;
+
+        # recommendations from https://raymii.org/s/tutorials/strong_ssl_security_on_nginx.html
+        ssl_protocols tlsv1.1 tlsv1.2;
+        ssl_ciphers '!aNULL:kECDH+AESGCM:ECDH+AESGCM:RSA+AESGCM:kECDH+AES:ECDH+AES:RSA+AES:';
+        ssl_prefer_server_ciphers on;
+        ssl_session_cache shared:ssl:10m;
+
+        # disable any limits to avoid http 413 for large image uploads
+        client_max_body_size 0;
+
+        # required to avoid http 411: see issue #1486 (https://github.com/docker/docker/issues/1486)
+        chunked_transfer_encoding on;
+
+        location /v2/ {
+          proxy_pass http://notary-server/v2/;
+          proxy_set_header Host $http_host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Proto $scheme;
+
+          proxy_buffering off;
+          proxy_request_buffering off;
+        }
+      }
+
+      server {
+        listen 8443 ssl;
+        server_tokens off;
+        # SSL
+        ssl_certificate /etc/nginx/cert/tls.crt;
+        ssl_certificate_key /etc/nginx/cert/tls.key;
+
+        # Recommendations from https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
+        ssl_protocols TLSv1.1 TLSv1.2;
+        ssl_ciphers '!aNULL:kECDH+AESGCM:ECDH+AESGCM:RSA+AESGCM:kECDH+AES:ECDH+AES:RSA+AES:';
+        ssl_prefer_server_ciphers on;
+        ssl_session_cache shared:SSL:10m;
+
+        # disable any limits to avoid HTTP 413 for large image uploads
+        client_max_body_size 0;
+
+        # required to avoid HTTP 411: see Issue #1486 (https://github.com/docker/docker/issues/1486)
+        chunked_transfer_encoding on;
+
+        # Add extra headers
+        add_header Strict-Transport-Security "max-age=31536000; includeSubdomains; preload";
+        add_header X-Frame-Options DENY;
+        add_header Content-Security-Policy "frame-ancestors 'none'";
+
+        location / {
+          proxy_pass http://portal/;
+          proxy_set_header Host $http_host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Proto $scheme;
+
+          # Add Secure flag when serving HTTPS
+          proxy_cookie_path / "/; HttpOnly; Secure";
+
+          proxy_buffering off;
+          proxy_request_buffering off;
+        }
+
+        location /api/ {
+          proxy_pass http://core/api/;
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Proto $scheme;
+          proxy_cookie_path / "/; Secure";
+
+          proxy_buffering off;
+          proxy_request_buffering off;
+        }
+
+        location /chartrepo/ {
+          proxy_pass http://core/chartrepo/;
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Proto $scheme;
+          proxy_cookie_path / "/; Secure";
+
+          proxy_buffering off;
+          proxy_request_buffering off;
+        }
+
+        location /c/ {
+          proxy_pass http://core/c/;
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Proto $scheme;
+          proxy_cookie_path / "/; Secure";
+
+          proxy_buffering off;
+          proxy_request_buffering off;
+        }
+
+        location /v1/ {
+          return 404;
+        }
+
+        location /v2/ {
+          proxy_pass http://core/v2/;
+          proxy_set_header Host $http_host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Proto $scheme;
+
+          proxy_buffering off;
+          proxy_request_buffering off;
+        }
+
+        location /service/ {
+          proxy_pass http://core/service/;
+          proxy_set_header Host $http_host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Proto $scheme;
+          proxy_cookie_path / "/; Secure";
+
+          proxy_buffering off;
+          proxy_request_buffering off;
+        }
+
+      location /service/notifications {
+          return 404;
+        }
+      }
+      server {
+          listen 8080;
+          return 301 https://$host$request_uri;
+      }
+    }
+---
+# Source: harbor/templates/portal/portal-cm.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: RELEASE-NAME-harbor-portal
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: portal
+data:
+  nginx.conf: |+
+    worker_processes auto;
+    pid /tmp/nginx.pid;
+    events {
+        worker_connections  1024;
+    }
+    http {
+        client_body_temp_path /tmp/client_body_temp;
+        proxy_temp_path /tmp/proxy_temp;
+        fastcgi_temp_path /tmp/fastcgi_temp;
+        uwsgi_temp_path /tmp/uwsgi_temp;
+        scgi_temp_path /tmp/scgi_temp;
+        server {
+            listen 8080;
+            server_name  localhost;
+            root   /usr/share/nginx/html;
+            index  index.html index.htm;
+            include /etc/nginx/mime.types;
+            gzip on;
+            gzip_min_length 1000;
+            gzip_proxied expired no-cache no-store private auth;
+            gzip_types text/plain text/css application/json application/javascript application/x-javascript text/xml application/xml application/xml+rss text/javascript;
+            location / {
+                try_files $uri $uri/ /index.html;
+            }
+            location = /index.html {
+                add_header Cache-Control "no-store, no-cache, must-revalidate";
+            }
+        }
+    }
+---
+# Source: harbor/templates/registry/registry-cm.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: RELEASE-NAME-harbor-registry
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+data:
+  config.yml: |+
+    version: 0.1
+    log:
+      level: debug
+      fields:
+        service: registry
+    storage:
+      filesystem:
+        rootdirectory: /storage
+      cache:
+        layerinfo: redis
+      maintenance:
+        uploadpurging:
+          enabled: false
+      delete:
+        enabled: true
+      redirect:
+        disable: false
+    redis:
+      addr: "RELEASE-NAME-redis-master:6379"
+      db: 2
+    http:
+      relativeurls: false
+      addr: :5000
+      # set via environment variable
+      # secret: placeholder
+      debug:
+        addr: localhost:5001
+    auth:
+      htpasswd:
+        realm: harbor-registry-basic-realm
+        path: /etc/registry/passwd
+    validation:
+      disabled: true
+    notifications:
+      endpoints:
+        - name: harbor
+          disabled: false
+          url: http://RELEASE-NAME-harbor-core/service/notifications
+          timeout: 3000ms
+          threshold: 5
+          backoff: 1s
+  ctl-config.yml: |+
+    ---
+    protocol: "http"
+    port: 8080
+    log_level: debug
+---
+# Source: harbor/templates/trivy/trivy-cm-envvars.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: RELEASE-NAME-harbor-trivy-envvars
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: trivy
+data:
+  SCANNER_LOG_LEVEL: "debug"
+  SCANNER_TRIVY_CACHE_DIR: "/bitnami/harbor-adapter-trivy/.cache/trivy"
+  SCANNER_TRIVY_REPORTS_DIR: "/bitnami/harbor-adapter-trivy/.cache/reports"
+  SCANNER_TRIVY_DEBUG_MODE: "false"
+  SCANNER_TRIVY_VULN_TYPE: "os,library"
+  SCANNER_TRIVY_SEVERITY: "UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL"
+  SCANNER_TRIVY_IGNORE_UNFIXED: "false"
+  SCANNER_TRIVY_SKIP_UPDATE: "false"
+  SCANNER_TRIVY_INSECURE: "false"
+  SCANNER_API_SERVER_ADDR: ":8080"
+---
+# Source: harbor/templates/chartmuseum/chartmuseum-pvc.yaml
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: RELEASE-NAME-harbor-chartmuseum
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: chartmuseum
+  annotations:
+    helm.sh/resource-policy: keep
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+---
+# Source: harbor/templates/jobservice/jobservice-pvc.yaml
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: RELEASE-NAME-harbor-jobservice
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: jobservice
+  annotations:
+    helm.sh/resource-policy: keep
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+# Source: harbor/templates/registry/registry-pvc.yaml
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: RELEASE-NAME-harbor-registry
+  annotations:
+    helm.sh/resource-policy: keep
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: registry
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+---
+# Source: harbor/charts/postgresql/templates/svc-headless.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: RELEASE-NAME-postgresql-headless
+  labels:
+    app.kubernetes.io/name: postgresql
+    helm.sh/chart: postgresql-9.1.4
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  clusterIP: None
+  ports:
+    - name: tcp-postgresql
+      port: 5432
+      targetPort: tcp-postgresql
+  selector:
+    app.kubernetes.io/name: postgresql
+    app.kubernetes.io/instance: RELEASE-NAME
+---
+# Source: harbor/charts/postgresql/templates/svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: RELEASE-NAME-postgresql
+  labels:
+    app.kubernetes.io/name: postgresql
+    helm.sh/chart: postgresql-9.1.4
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+spec:
+  type: ClusterIP
+  ports:
+    - name: tcp-postgresql
+      port: 5432
+      targetPort: tcp-postgresql
+  selector:
+    app.kubernetes.io/name: postgresql
+    app.kubernetes.io/instance: RELEASE-NAME
+    role: master
+---
+# Source: harbor/charts/redis/templates/headless-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: RELEASE-NAME-redis-headless
+  namespace: default
+  labels:
+    app: redis
+    chart: redis-10.7.13
+    release: RELEASE-NAME
+    heritage: Helm
+spec:
+  type: ClusterIP
+  clusterIP: None
+  ports:
+    - name: redis
+      port: 6379
+      targetPort: redis
+  selector:
+    app: redis
+    release: RELEASE-NAME
+---
+# Source: harbor/charts/redis/templates/redis-master-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: RELEASE-NAME-redis-master
+  namespace: default
+  labels:
+    app: redis
+    chart: redis-10.7.13
+    release: RELEASE-NAME
+    heritage: Helm
+spec:
+  type: ClusterIP
+  ports:
+    - name: redis
+      port: 6379
+      targetPort: redis
+  selector:
+    app: redis
+    release: RELEASE-NAME
+    role: master
+---
+# Source: harbor/templates/chartmuseum/chartmuseum-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: RELEASE-NAME-harbor-chartmuseum
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: chartmuseum
+spec:
+  ports:
+    - port: 80
+      name: http
+      targetPort: http
+  selector:
+    app.kubernetes.io/name: harbor
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/component: chartmuseum
+---
+# Source: harbor/templates/clair/clair-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: RELEASE-NAME-harbor-clair
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: clair
+spec:
+  ports:
+    - name: clair
+      port: 6060
+    - name: health
+      port: 6061
+    - name: adapter
+      port: 8080
+  selector:
+    app.kubernetes.io/name: harbor
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/component: clair
+---
+# Source: harbor/templates/core/core-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: RELEASE-NAME-harbor-core
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: core
+spec:
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+  selector:
+    app.kubernetes.io/name: harbor
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/component: core
+---
+# Source: harbor/templates/jobservice/jobservice-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: RELEASE-NAME-harbor-jobservice
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: jobservice
+spec:
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+  selector:
+    app.kubernetes.io/name: harbor
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/component: jobservice
+---
+# Source: harbor/templates/nginx/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: RELEASE-NAME-harbor
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: nginx
+  annotations:
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: 
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+    - name: https
+      port: 443
+      targetPort: https
+    - name: notary
+      port: 4443
+      targetPort: notary
+  selector:
+    app.kubernetes.io/name: harbor
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/component: nginx
+---
+# Source: harbor/templates/notary/notary-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: RELEASE-NAME-harbor-notary-server
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+spec:
+  ports:
+    - name: notary-server
+      port: 4443
+      targetPort: notary-server
+  selector:
+    app.kubernetes.io/name: harbor
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/component: notary-server
+---
+# Source: harbor/templates/notary/notary-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: RELEASE-NAME-harbor-notary-signer
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+spec:
+  ports:
+    - name: notary-signer
+      port: 7899
+      targetPort: notary-signer
+  selector:
+    app.kubernetes.io/name: harbor
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/component: notary-signer
+---
+# Source: harbor/templates/portal/portal-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: RELEASE-NAME-harbor-portal
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+spec:
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+  selector:
+    app.kubernetes.io/name: harbor
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/component: portal
+---
+# Source: harbor/templates/registry/registry-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: RELEASE-NAME-harbor-registry
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+spec:
+  ports:
+    - name: registry
+      port: 5000
+    - name: controller
+      port: 8080
+  selector:
+    app.kubernetes.io/name: harbor
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/component: registry
+---
+# Source: harbor/templates/trivy/trivy-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: RELEASE-NAME-harbor-trivy
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: trivy
+spec:
+  ports:
+    - name: api-server
+      protocol: TCP
+      port: 8080
+      targetPort: api-server
+  selector:
+    app.kubernetes.io/name: harbor
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/component: trivy
+---
+# Source: harbor/templates/chartmuseum/chartmuseum-dpl.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: RELEASE-NAME-harbor-chartmuseum
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: chartmuseum
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: harbor
+      app.kubernetes.io/instance: RELEASE-NAME
+      app.kubernetes.io/component: chartmuseum
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: harbor
+        app.kubernetes.io/instance: RELEASE-NAME
+        app.kubernetes.io/component: chartmuseum
+      annotations:
+        checksum/configmap-envvars: 98cdbe12b2396184f9c26c6b0834bce86caae5e7ff6d002f1e40fe568b6fa984
+        checksum/secret: cb421f73bf5e7fd99157eb6f37d71223ceea3d1e5748be975d7888851e180831
+        checksum/secret-core: d96322296eedb4a92d23a31ae29220322d809ce2d124dc40eb17981bd5109aeb
+    spec:
+      
+      securityContext:
+        fsGroup: 1001
+      containers:
+        - name: chartmuseum
+          image: docker.io/bitnami/chartmuseum:0.12.0-debian-10-r119
+          imagePullPolicy: "IfNotPresent"
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1001
+          resources:
+            limits: {}
+            requests: {}
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+              scheme: HTTP
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 20
+            successThreshold: 1
+            failureThreshold: 10
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+              scheme: HTTP
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 20
+            successThreshold: 1
+            failureThreshold: 10
+          envFrom:
+            - configMapRef:
+                name: RELEASE-NAME-harbor-chartmuseum-envvars
+            - secretRef:
+                name: RELEASE-NAME-harbor-chartmuseum-secret
+          env:
+            - name: DEBUG
+              value: "0"
+            - name: BASIC_AUTH_PASS
+              valueFrom:
+                secretKeyRef:
+                  # Take the password from the core component secret
+                  name: RELEASE-NAME-harbor-core
+                  key: secret
+          ports:
+            - containerPort: 9999
+              name: http
+          volumeMounts:
+            - name: chartmuseum-data
+              mountPath: /bitnami/data
+              subPath: 
+      volumes:
+        - name: chartmuseum-data
+          persistentVolumeClaim:
+            claimName: RELEASE-NAME-harbor-chartmuseum
+---
+# Source: harbor/templates/clair/clair-dpl.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: RELEASE-NAME-harbor-clair
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: clair
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: harbor
+      app.kubernetes.io/instance: RELEASE-NAME
+      app.kubernetes.io/component: clair
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: harbor
+        helm.sh/chart: harbor-7.0.3
+        app.kubernetes.io/instance: RELEASE-NAME
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/component: clair
+      annotations:
+        checksum/secret: 15d3e28d07da046d0fc8664cfe25ef8253ed733b8c58d69c917b2275b4b9a26a
+    spec:
+      
+      securityContext:
+        fsGroup: 1001
+      containers:
+        - name: clair
+          image: docker.io/bitnami/harbor-clair:2.0.2-debian-10-r0
+          imagePullPolicy: "IfNotPresent"
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1001
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 6061
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 6061
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          env:
+            - name: BITNAMI_DEBUG
+              value: "false"
+            - name: NO_PROXY
+              value: "RELEASE-NAME-harbor-core,RELEASE-NAME-harbor-jobservice,RELEASE-NAME-harbor-database,RELEASE-NAME-harbor-chartmuseum,RELEASE-NAME-harbor-clair,RELEASE-NAME-harbor-notary-server,RELEASE-NAME-harbor-notary-signer,RELEASE-NAME-harbor-registry,RELEASE-NAME-harbor-portal,RELEASE-NAME-harbor-trivy,127.0.0.1,localhost,.local,.internal"
+          envFrom:
+          resources:
+            limits: {}
+            requests: {}
+          ports:
+            - containerPort: 6060
+          volumeMounts:
+            - name: config
+              mountPath: /etc/clair/config.yaml
+              subPath: config.yaml
+        - name: adapter
+          image: docker.io/bitnami/harbor-adapter-clair:2.0.2-debian-10-r0
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1001
+          livenessProbe:
+            httpGet:
+              path: /probe/healthy
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          readinessProbe:
+            httpGet:
+              path: /probe/ready
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          env:
+            - name: BITNAMI_DEBUG
+              value: "false"
+            - name: SCANNER_CLAIR_URL
+              # To avoid a pod cannot reach itself via service IP when the clusters disable hairpin
+              value: "http://127.0.0.1:6060"
+            - name: SCANNER_STORE_REDIS_URL
+              value: redis://RELEASE-NAME-redis-master:6379/4
+            - name: SCANNER_CLAIR_DATABASE_URL
+              value: postgres://postgres:not-secure-database-password@RELEASE-NAME-postgresql:5432/postgres?sslmode=disable
+          envFrom:
+          resources:
+            limits: {}
+            requests: {}
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+      volumes:
+        - name: config
+          secret:
+            secretName: "RELEASE-NAME-harbor-clair"
+---
+# Source: harbor/templates/core/core-dpl.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: RELEASE-NAME-harbor-core
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: core
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: harbor
+      app.kubernetes.io/instance: RELEASE-NAME
+      app.kubernetes.io/component: core
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: harbor
+        app.kubernetes.io/instance: RELEASE-NAME
+        app.kubernetes.io/component: core
+      annotations:
+        checksum/configmap: 0c501d5518c6d0733ce810cd599b2224d3b69df0cc86274e2c43a756da558d94
+        checksum/configmap-envvars: 1e87d50c3d09acd8394a279fa01f95208fd01f32572b0fdf41afc6debcaec810
+        checksum/secret: b67b23761ba4aafaa1b307a076fe497f92ac1fa7a27afed2f9696baa13c597c2
+        checksum/secret-envvars: 1bca6629717e56159540cabe17a77f2c6e5f7464cb2951acc209da735b1b9c24
+        checksum/secret-jobservice: 3af4a44d0b54800ae42664d658221b819b6b695a6485e2792fd34c33c49b658c
+    spec:
+      
+      securityContext:
+        fsGroup: 1001
+      containers:
+        - name: core
+          image: docker.io/bitnami/harbor-core:2.0.2-debian-10-r0
+          imagePullPolicy: "IfNotPresent"
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1001
+          livenessProbe:
+            httpGet:
+              path: /api/v2.0/ping
+              scheme: HTTP
+              port: http
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          readinessProbe:
+            httpGet:
+              path: /api/v2.0/ping
+              scheme: HTTP
+              port: http
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          envFrom:
+            - configMapRef:
+                name: RELEASE-NAME-harbor-core-envvars
+            - secretRef:
+                name: RELEASE-NAME-harbor-core-envvars
+          env:
+            - name: BITNAMI_DEBUG
+              value: "false"
+            - name: CORE_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: RELEASE-NAME-harbor-core
+                  key: secret
+            - name: JOBSERVICE_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: RELEASE-NAME-harbor-jobservice
+                  key: secret
+          ports:
+            - containerPort: 8080
+              name: http
+          volumeMounts:
+            - name: config
+              mountPath: /etc/core/app.conf
+              subPath: app.conf
+            - name: secret-key
+              mountPath: /etc/core/key
+              subPath: key
+            - name: token-service-private-key
+              mountPath: /etc/core/private_key.pem
+              subPath: tls.key
+            - name: ca-download
+              mountPath: /etc/core/ca
+            - name: psc
+              mountPath: /etc/core/token
+          resources:
+            limits: {}
+            requests: {}
+      volumes:
+        - name: config
+          configMap:
+            name: RELEASE-NAME-harbor-core
+            items:
+              - key: app.conf
+                path: app.conf
+        - name: secret-key
+          secret:
+            secretName: RELEASE-NAME-harbor-core
+            items:
+              - key: secretKey
+                path: key
+        - name: token-service-private-key
+          secret:
+            secretName: RELEASE-NAME-harbor-core
+        - name: ca-download
+          secret:
+            secretName: RELEASE-NAME-harbor-nginx
+        - name: psc
+          emptyDir: {}
+---
+# Source: harbor/templates/jobservice/jobservice-dpl.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: RELEASE-NAME-harbor-jobservice
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: jobservice
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: harbor
+      app.kubernetes.io/instance: RELEASE-NAME
+      app.kubernetes.io/component: jobservice
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: harbor
+        helm.sh/chart: harbor-7.0.3
+        app.kubernetes.io/instance: RELEASE-NAME
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/component: jobservice
+      annotations:
+        checksum/configmap: e3b3353ee1cfd3cb4540a3b48e0cb6c489c4772d1a384dbaa46d2f7763acd083
+        checksum/configmap-env: 82e68218f14027cddfe8191b12ab64168f1f78dfd743b47f62df2954224afd0e
+        checksum/secret-env: f614b93b3f20c1362b7517a0faef3225e1ea553c074ded8df8d37d5e8b0d7c69
+        checksum/secret: e7aeb340bf5b5b1cbf6678b1d724bd6a45c0387ab3788e7d014cdd864e91a962
+        checksum/secret-core: 456566d8b4d107b45653e41055e0e4d983534602bd610c6c6538cc73681a43c1
+    spec:
+      
+      securityContext:
+        fsGroup: 1001
+      initContainers:
+      containers:
+        - name: jobservice
+          image: docker.io/bitnami/harbor-jobservice:2.0.2-debian-10-r0
+          imagePullPolicy: "IfNotPresent"
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1001
+          livenessProbe:
+            httpGet:
+              path: /api/v1/stats
+              port: http
+              scheme: HTTP
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          readinessProbe:
+            httpGet:
+              path: /api/v1/stats
+              port: http
+              scheme: HTTP
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          resources:
+            limits: {}
+            requests: {}
+          env:
+            - name: BITNAMI_DEBUG
+              value: "false"
+            - name: CORE_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: RELEASE-NAME-harbor-core
+                  key: secret
+            - name: JOBSERVICE_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: RELEASE-NAME-harbor-jobservice
+                  key: secret
+          envFrom:
+            - configMapRef:
+                name: RELEASE-NAME-harbor-jobservice-envvars
+            - secretRef:
+                name: RELEASE-NAME-harbor-jobservice-envvars
+          ports:
+            - containerPort: 8080
+              name: http
+          volumeMounts:
+            - name: jobservice-config
+              mountPath: /etc/jobservice/config.yml
+              subPath: config.yml
+            - name: job-logs
+              mountPath: /var/log/jobs
+              subPath: 
+      volumes:
+        - name: jobservice-config
+          configMap:
+            name: RELEASE-NAME-harbor-jobservice
+        - name: job-logs
+          persistentVolumeClaim:
+            claimName: RELEASE-NAME-harbor-jobservice
+---
+# Source: harbor/templates/nginx/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: RELEASE-NAME-harbor-nginx
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: nginx
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: harbor
+      app.kubernetes.io/instance: RELEASE-NAME
+      app.kubernetes.io/component: nginx
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: harbor
+        helm.sh/chart: harbor-7.0.3
+        app.kubernetes.io/instance: RELEASE-NAME
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/component: nginx
+      annotations:
+        checksum/configmap: 9ed7dc77e43ce92e1fb373b38c5729197680d80efd20857f193ee9f85baa6c7f
+        checksum/secret: f2d630fed1190f435bad5c3f363b0002a997f9f6e816f074591f35056db3aa05
+    spec:
+      
+      securityContext:
+        fsGroup: 1001
+      containers:
+        - name: nginx
+          image: docker.io/bitnami/nginx:1.19.1-debian-10-r23
+          imagePullPolicy: "IfNotPresent"
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1001
+          livenessProbe:
+            httpGet:
+              path: /
+              port: https
+              scheme: HTTPS
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          readinessProbe:
+            httpGet:
+              path: /
+              port: https
+              scheme: HTTPS
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          env:
+            - name: BITNAMI_DEBUG
+              value: "false"
+          envFrom:
+          resources:
+            limits: {}
+            requests: {}
+          ports:
+            - containerPort: 8080
+              name: http
+            - containerPort: 8443
+              name: https
+            - containerPort: 4443
+              name: notary
+          volumeMounts:
+            - name: config
+              mountPath: /opt/bitnami/nginx/conf/nginx.conf
+              subPath: nginx.conf
+            - name: certificate
+              mountPath: /etc/nginx/cert
+      volumes:
+        - name: config
+          configMap:
+            name: RELEASE-NAME-harbor-nginx
+        - name: certificate
+          secret:
+            secretName: RELEASE-NAME-harbor-nginx
+---
+# Source: harbor/templates/notary/notary-server.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: RELEASE-NAME-harbor-notary-server
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: notary-server
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: harbor
+      app.kubernetes.io/instance: RELEASE-NAME
+      app.kubernetes.io/component: notary-server
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: harbor
+        helm.sh/chart: harbor-7.0.3
+        app.kubernetes.io/instance: RELEASE-NAME
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/component: notary-server
+      annotations:
+        checksum/secret: 1f11a51170d02a7b8e809e392efaee34879b0c154a07edc2e998f92ac83e0b56
+        checksum/secret-core: 67de76be4649d3c75e8fd09d1a1405a810a7a2b622beebeed84c533d2dc79c11
+    spec:
+      
+      securityContext:
+        fsGroup: 1001
+      containers:
+        - name: notary-server
+          image: "docker.io/bitnami/harbor-notary-server:2.0.2-debian-10-r0"
+          imagePullPolicy: "IfNotPresent"
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1001
+          resources:
+            limits: {}
+            requests: {}
+          env:
+            - name: BITNAMI_DEBUG
+              value: "false"
+            - name: MIGRATIONS_PATH
+              value: migrations/server/postgresql
+            - name: DB_URL
+              value: postgres://postgres:not-secure-database-password@RELEASE-NAME-postgresql:5432/notaryserver?sslmode=disable
+          envFrom:
+          volumeMounts:
+            - name: notary-config
+              mountPath: /etc/notary
+            - name: root-certificate
+              mountPath: /root.crt
+              subPath: tls.crt
+          ports:
+            - containerPort: 4443
+              name: notary-server
+          livenessProbe:
+            tcpSocket:
+              port: notary-server
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          readinessProbe:
+            tcpSocket:
+              port: notary-server
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+      volumes:
+        - name: notary-config
+          secret:
+            secretName: RELEASE-NAME-harbor-notary-server
+        - name: root-certificate
+          secret:
+            secretName: RELEASE-NAME-harbor-core
+---
+# Source: harbor/templates/notary/notary-signer.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: RELEASE-NAME-harbor-notary-signer
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: notary-signer
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: harbor
+      app.kubernetes.io/instance: RELEASE-NAME
+      app.kubernetes.io/component: notary-signer
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: harbor
+        helm.sh/chart: harbor-7.0.3
+        app.kubernetes.io/instance: RELEASE-NAME
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/component: notary-signer
+      annotations:
+        checksum/secret: e7f406266a5fc107fa4cb14bb107efddac75c7f53f1dd8077a319d19bcc3148d
+    spec:
+      
+      securityContext:
+        fsGroup: 1001
+      containers:
+        - name: notary-signer
+          image: docker.io/bitnami/harbor-notary-signer:2.0.2-debian-10-r0
+          imagePullPolicy: "IfNotPresent"
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1001
+          resources:
+            limits: {}
+            requests: {}
+          env:
+            - name: BITNAMI_DEBUG
+              value: "false"
+            - name: MIGRATIONS_PATH
+              value: migrations/signer/postgresql
+            - name: DB_URL
+              value: "postgres://postgres:not-secure-database-password@RELEASE-NAME-postgresql:5432/notarysigner?sslmode=disable"
+            - name: NOTARY_SIGNER_DEFAULTALIAS
+              value: defaultalias
+          envFrom:
+          volumeMounts:
+            - name: notary-config
+              mountPath: /etc/notary
+          ports:
+            - containerPort: 7899
+              name: notary-signer
+          livenessProbe:
+            tcpSocket:
+              port: notary-signer
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          readinessProbe:
+            tcpSocket:
+              port: notary-signer
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+      volumes:
+        - name: notary-config
+          secret:
+            secretName: RELEASE-NAME-harbor-notary-server
+---
+# Source: harbor/templates/portal/portal-dpl.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: RELEASE-NAME-harbor-portal
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: portal
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: harbor
+      app.kubernetes.io/instance: RELEASE-NAME
+      app.kubernetes.io/component: portal
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: harbor
+        helm.sh/chart: harbor-7.0.3
+        app.kubernetes.io/instance: RELEASE-NAME
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/component: portal
+      annotations:
+    spec:
+      
+      securityContext:
+        fsGroup: 1001
+      containers:
+        - name: portal
+          image: docker.io/bitnami/harbor-portal:2.0.2-debian-10-r2
+          imagePullPolicy: "IfNotPresent"
+          resources:
+            limits: {}
+            requests: {}
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1001
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+              scheme: HTTP
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+              scheme: HTTP
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          env:
+            - name: BITNAMI_DEBUG
+              value: "false"
+          envFrom:
+          ports:
+            - containerPort: 8080
+              name: http
+---
+# Source: harbor/templates/registry/registry-dpl.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: RELEASE-NAME-harbor-registry
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: registry
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: harbor
+      app.kubernetes.io/instance: RELEASE-NAME
+      app.kubernetes.io/component: registry
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: harbor
+        helm.sh/chart: harbor-7.0.3
+        app.kubernetes.io/instance: RELEASE-NAME
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/component: registry
+      annotations:
+        checksum/configmap: 183d2b43755e78fe4b5154f4432af0fbd5da7445c9015baf5d70ed83fe8ae14b
+        checksum/secret: 9bdb05b966361be46d648fc6dd987c504babaf6dbd5c7895d6fc1beabf66fd89
+        checksum/secret-jobservice: 2c8f31bc639ac5040d609bffcbddc42e9dc5c33276068d3d1f13eb2414b48f2e
+        checksum/secret-core: 718b9153154aabc1c1268d6d2a86c07ae3ee33e760b5b48270bbdba0e89156b5
+    spec:
+      
+      securityContext:
+        fsGroup: 1001
+      initContainers:
+      containers:
+        - name: registry
+          image: docker.io/bitnami/harbor-registry:2.0.2-debian-10-r0
+          imagePullPolicy: "IfNotPresent"
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1001
+          livenessProbe:
+            httpGet:
+              path: /
+              scheme: HTTP
+              port: registry
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          readinessProbe:
+            httpGet:
+              path: /
+              scheme: HTTP
+              port: registry
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          resources:
+            limits: {}
+            requests: {}
+          env:
+            - name: BITNAMI_DEBUG
+              value: "false"
+          envFrom:
+            - secretRef:
+                name: RELEASE-NAME-harbor-registry
+          ports:
+            - containerPort: 5000
+              name: registry
+            - containerPort: 5001
+              name: debug
+          volumeMounts:
+            - name: registry-data
+              mountPath: /storage
+              subPath: 
+            - name: registry-root-certificate
+              mountPath: /etc/registry/root.crt
+              subPath: tls.crt
+            - name: registry-htpasswd
+              mountPath: /etc/registry/passwd
+              subPath: passwd
+            - name: registry-config
+              mountPath: /etc/registry/config.yml
+              subPath: config.yml
+        - name: registryctl
+          image: docker.io/bitnami/harbor-registryctl:2.0.2-debian-10-r0
+          imagePullPolicy: "IfNotPresent"
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1001
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              scheme: HTTP
+              port: registryctl
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              scheme: HTTP
+              port: registryctl
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          resources:
+            limits: {}
+            requests: {}
+          envFrom:
+            - secretRef:
+                name: RELEASE-NAME-harbor-registry
+          env:
+            - name: BITNAMI_DEBUG
+              value: "false"
+            - name: CORE_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: RELEASE-NAME-harbor-core
+                  key: secret
+            - name: JOBSERVICE_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: RELEASE-NAME-harbor-jobservice
+                  key: secret
+          ports:
+            - containerPort: 8080
+              name: registryctl
+          volumeMounts:
+            - name: registry-data
+              mountPath: /storage
+              subPath: 
+            - name: registry-config
+              mountPath: /etc/registry/config.yml
+              subPath: config.yml
+            - name: registry-config
+              mountPath: /etc/registryctl/config.yml
+              subPath: ctl-config.yml
+      volumes:
+        - name: registry-htpasswd
+          secret:
+            secretName: RELEASE-NAME-harbor-registry
+            items:
+              - key: REGISTRY_HTPASSWD
+                path: passwd
+        - name: registry-root-certificate
+          secret:
+            secretName: RELEASE-NAME-harbor-core
+        - name: registry-config
+          configMap:
+            name: RELEASE-NAME-harbor-registry
+        - name: registry-data
+          persistentVolumeClaim:
+            claimName: RELEASE-NAME-harbor-registry
+---
+# Source: harbor/charts/postgresql/templates/statefulset.yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: RELEASE-NAME-postgresql
+  labels:
+    app.kubernetes.io/name: postgresql
+    helm.sh/chart: postgresql-9.1.4
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+spec:
+  serviceName: RELEASE-NAME-postgresql-headless
+  replicas: 1
+  updateStrategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: postgresql
+      app.kubernetes.io/instance: RELEASE-NAME
+      role: master
+  template:
+    metadata:
+      name: RELEASE-NAME-postgresql
+      labels:
+        app.kubernetes.io/name: postgresql
+        helm.sh/chart: postgresql-9.1.4
+        app.kubernetes.io/instance: RELEASE-NAME
+        app.kubernetes.io/managed-by: Helm
+        role: master
+    spec:      
+      securityContext:
+        fsGroup: 1001
+      containers:
+        - name: RELEASE-NAME-postgresql
+          image: docker.io/bitnami/postgresql:11.8.0-debian-10-r76
+          imagePullPolicy: "IfNotPresent"
+          resources:
+            requests:
+              cpu: 250m
+              memory: 256Mi
+          securityContext:
+            runAsUser: 1001
+          env:
+            - name: BITNAMI_DEBUG
+              value: "false"
+            - name: POSTGRESQL_PORT_NUMBER
+              value: "5432"
+            - name: POSTGRESQL_VOLUME_DIR
+              value: "/bitnami/postgresql"
+            - name: PGDATA
+              value: "/bitnami/postgresql/data"
+            - name: POSTGRES_USER
+              value: "postgres"
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: RELEASE-NAME-postgresql
+                  key: postgresql-password
+            - name: POSTGRESQL_ENABLE_LDAP
+              value: "no"
+            - name: POSTGRESQL_ENABLE_TLS
+              value: "no"
+          ports:
+            - name: tcp-postgresql
+              containerPort: 5432
+          livenessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - exec pg_isready -U "postgres" -h 127.0.0.1 -p 5432
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          readinessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - -e
+                - |
+                  exec pg_isready -U "postgres" -h 127.0.0.1 -p 5432
+                  [ -f /opt/bitnami/postgresql/tmp/.initialized ] || [ -f /bitnami/postgresql/.initialized ]
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          volumeMounts:
+            - name: custom-init-scripts
+              mountPath: /docker-entrypoint-initdb.d/
+            - name: dshm
+              mountPath: /dev/shm
+            - name: data
+              mountPath: /bitnami/postgresql
+              subPath: 
+      volumes:
+        - name: custom-init-scripts
+          configMap:
+            name: RELEASE-NAME-postgresql-init-scripts
+        - name: dshm
+          emptyDir:
+            medium: Memory
+            sizeLimit: 1Gi
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes:
+          - "ReadWriteOnce"
+        resources:
+          requests:
+            storage: "8Gi"
+---
+# Source: harbor/charts/redis/templates/redis-master-statefulset.yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: RELEASE-NAME-redis-master
+  namespace: default
+  labels:
+    app: redis
+    chart: redis-10.7.13
+    release: RELEASE-NAME
+    heritage: Helm
+spec:
+  selector:
+    matchLabels:
+      app: redis
+      release: RELEASE-NAME
+      role: master
+  serviceName: RELEASE-NAME-redis-headless
+  template:
+    metadata:
+      labels:
+        app: redis
+        chart: redis-10.7.13
+        release: RELEASE-NAME
+        role: master
+      annotations:
+        checksum/health: e8dd78f7c159c85843fc01bdbe257e78c4b748ef1de0fcea51d453ede6c060a5
+        checksum/configmap: e3bce5d07c1957e81ebf8c7ac81b7a0cfecee1a99f848d5543e5a6719915c6e8
+        checksum/secret: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+    spec:
+      
+      securityContext:
+        fsGroup: 1001
+      serviceAccountName: default
+      containers:
+        - name: redis
+          image: docker.io/bitnami/redis:6.0.6-debian-10-r7
+          imagePullPolicy: "IfNotPresent"
+          securityContext:
+            runAsUser: 1001
+          command:
+            - /bin/bash
+            - -c
+            - |
+              if [[ -n $REDIS_PASSWORD_FILE ]]; then
+                password_aux=`cat ${REDIS_PASSWORD_FILE}`
+                export REDIS_PASSWORD=$password_aux
+              fi
+              if [[ ! -f /opt/bitnami/redis/etc/master.conf ]];then
+                cp /opt/bitnami/redis/mounted-etc/master.conf /opt/bitnami/redis/etc/master.conf
+              fi
+              if [[ ! -f /opt/bitnami/redis/etc/redis.conf ]];then
+                cp /opt/bitnami/redis/mounted-etc/redis.conf /opt/bitnami/redis/etc/redis.conf
+              fi
+              ARGS=("--port" "${REDIS_PORT}")
+              ARGS+=("--protected-mode" "no")
+              ARGS+=("--include" "/opt/bitnami/redis/etc/redis.conf")
+              ARGS+=("--include" "/opt/bitnami/redis/etc/master.conf")
+              /run.sh ${ARGS[@]}
+          env:
+            - name: REDIS_REPLICATION_MODE
+              value: master
+            - name: ALLOW_EMPTY_PASSWORD
+              value: "yes"
+            - name: REDIS_TLS_ENABLED
+              value: "no"
+            - name: REDIS_PORT
+              value: "6379"
+          ports:
+            - name: redis
+              containerPort: 6379
+          livenessProbe:
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 5
+            exec:
+              command:
+                - sh
+                - -c
+                - /health/ping_liveness_local.sh 5
+          readinessProbe:
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 1
+            successThreshold: 1
+            failureThreshold: 5
+            exec:
+              command:
+                - sh
+                - -c
+                - /health/ping_readiness_local.sh 5
+          resources:
+            null
+          volumeMounts:
+            - name: health
+              mountPath: /health
+            - name: redis-data
+              mountPath: /data
+              subPath: 
+            - name: config
+              mountPath: /opt/bitnami/redis/mounted-etc
+            - name: redis-tmp-conf
+              mountPath: /opt/bitnami/redis/etc/
+      volumes:
+        - name: health
+          configMap:
+            name: RELEASE-NAME-redis-health
+            defaultMode: 0755
+        - name: config
+          configMap:
+            name: RELEASE-NAME-redis
+        - name: redis-tmp-conf
+          emptyDir: {}
+  volumeClaimTemplates:
+    - metadata:
+        name: redis-data
+        labels:
+          app: redis
+          release: RELEASE-NAME
+          heritage: Helm
+          component: master
+      spec:
+        accessModes:
+          - "ReadWriteOnce"
+        resources:
+          requests:
+            storage: "8Gi"
+        
+        selector:
+  updateStrategy:
+    type: RollingUpdate
+---
+# Source: harbor/templates/trivy/trivy-sts.yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: RELEASE-NAME-harbor-trivy
+  labels:
+    app.kubernetes.io/name: harbor
+    helm.sh/chart: harbor-7.0.3
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: trivy
+spec:
+  replicas: 1
+  serviceName: RELEASE-NAME-harbor-trivy
+  updateStrategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: harbor
+      app.kubernetes.io/instance: RELEASE-NAME
+      app.kubernetes.io/component: trivy
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: harbor
+        helm.sh/chart: harbor-7.0.3
+        app.kubernetes.io/instance: RELEASE-NAME
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/component: trivy
+      annotations:
+        checksum/configmap-env: 9c041c6f260498781ae03558111d15948c3fd7e90da5c566e8aeefce9831a328
+        checksum/secret-env: 616a5a527bdf11e6b3e4f890eac437a1840b22184e3b43f63ab7be3a0d5a3e51
+    spec:
+      
+      securityContext:
+        fsGroup: 1001
+      automountServiceAccountToken: false
+      initContainers:
+      containers:
+        - name: trivy
+          image: docker.io/bitnami/harbor-adapter-trivy:2.0.2-debian-10-r1
+          imagePullPolicy: "IfNotPresent"
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1001
+          env:
+            - name: BITNAMI_DEBUG
+              value: "false"
+          envFrom:
+            - configMapRef:
+                name: RELEASE-NAME-harbor-trivy-envvars
+            - secretRef:
+                name: RELEASE-NAME-harbor-trivy-envvars
+          ports:
+            - name: api-server
+              containerPort: 8080
+          volumeMounts:
+            - name: data
+              mountPath: /bitnami/harbor-adapter-trivy/.cache
+              readOnly: false
+          livenessProbe:
+            httpGet:
+              path: /probe/healthy
+              port: http
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          readinessProbe:
+            httpGet:
+              scheme: HTTP
+              path: /probe/ready
+              port: api-server
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          resources:
+            limits:
+              cpu: 1
+              memory: 1Gi
+            requests:
+              cpu: 200m
+              memory: 512Mi
+      volumes:
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+        labels:
+          app.kubernetes.io/name: harbor
+          app.kubernetes.io/instance: RELEASE-NAME
+      spec:
+        accessModes:
+          - "ReadWriteOnce"
+        
+        resources:
+          requests:
+            storage: "5Gi"
